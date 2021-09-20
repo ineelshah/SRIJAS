@@ -53,8 +53,8 @@ resource "aws_db_instance" "default" {
   instance_class       = "db.t2.micro"
   identifier           = "srijas"
   name                 = "srijas"
-  username             = "root"
-  password             = "rootpassword"
+  username             = "${var.db_user_name}"
+  password             = "${var.db_password}"
   parameter_group_name = aws_db_parameter_group.default.id
   db_subnet_group_name = aws_db_subnet_group.default.id
   vpc_security_group_ids = [ aws_security_group.rds-sg.id ]

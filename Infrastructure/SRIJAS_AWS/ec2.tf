@@ -24,6 +24,8 @@ sudo apt update -y
 sudo apt install apache2 -y
 sudo systemctl start apache2
 sudo bash -c 'echo terraform server > /var/www/html/index.html'
+sudo bash -c 'echo CREATE DATABASE newTrial > /tmp/sample.sql'
+mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /tmp/sample.sql
 EOF
 }
 

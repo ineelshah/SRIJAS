@@ -1,10 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
-username="atathav@ncsu.edu"
-pwd="Goldeng@te2486"
+import docx
+mydoc = docx.Document()
+username="programmer13651@gmail.com"
+pwd=""
 options = Options()
-options.headless = True
+options.headless = False
 options.add_argument("--window-size=1920,1200")
 browser = webdriver.Chrome(options=options, executable_path="D:\ChromeDriver\chromedriver.exe")
 #browser.get('https://www.linkedin.com/jobs/jobs-in-raleigh-nc?trk=homepage-basic_intent-module-jobs&position=1&pageNum=0')
@@ -23,7 +25,7 @@ searchquery="Software Engineer"
 no_of_jobs_to_retrieve=5
 count=0
 #setting job filter value
-job_description=browser.find_element_by_id("jobs-search-box-keyword-id-ember40").send_keys(searchquery)
+job_description=browser.find_element_by_xpath("//input[@id='jobs-search-box-keyword-id-ember40']").send_keys(searchquery)
 #inserting job filter value
 search_button=browser.find_element_by_class_name("jobs-search-box__submit-button")
 search_button.click()
@@ -45,22 +47,49 @@ for i in job_cards:
 print(len(href_arr))#=25
  #looping through every job listing to scrape relevant data
 data=[]
+listele=[]
 for url in href_arr:
      browser.get(url)
      time.sleep(5)
      show_more_button=browser.find_element_by_xpath("//button[@id='ember48']")
      show_more_button.click()
-     data.append(browser.find_element_by_tag_name("ul").text)
+     list_ele=browser.find_elements_by_xpath("//article//li")
+     ##for each job lisitng loop through all list items and add the text
+     for li in list_ele:
+         data.append(li.text);
      time.sleep(5)
      count+=1
      if(count==no_of_jobs_to_retrieve):
          break
+mydoc.add_paragraph(data)
+mydoc.save("D:/SE/Project/proj_codebase/SRIJAS/Scraped_Data_Linkedin")
 print(data)
 #browser.close()
 
           
           
           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           
           
           

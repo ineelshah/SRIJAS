@@ -22,21 +22,21 @@
   </div>
 
 <div class="align-items-center" align = "center">
-  <form>
+  <form method="post" action="sendData.php">
 
     <div class="form-group col-4">
       <label for="inputName">Name</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Enter Your Name" text-align="center">
+      <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter Your Name" text-align="center">
     </div>
 
     <div class="form-group  col-4">
       <label for="inputEmail">Email address</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+      <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Enter email">
     </div>
 
     <div class="col-auto my-1 col-4">
       <label for="inputJobTypeId">Type Of Job You Are Looking For: </label>
-      <select class="custom-select mr-sm-2" id="inputJobTypeId">
+      <select class="custom-select mr-sm-2" id="inputJobTypeId" name="inputJobTypeId">
         <option selected>Choose...</option>
         <option value="1">Software Engineering Intern</option>
         <option value="2">Software Engineering (Full-Time)</option>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-auto my-1">
-      <button type="submit" class="btn btn-primary col-auto">Submit</button>
+      <button type="submit" id="submit" class="btn btn-primary col-auto">Submit</button>
     </div>
 
   </form>
@@ -72,3 +72,14 @@
 <br>
 </body>
 </html>
+
+<!-- <script>
+
+function submitter() {
+  var name = document.getElementById("inputName").value;
+  var email = document.getElementById("inputEmail").value;
+
+  window.alert(name);
+}
+
+</script> -->

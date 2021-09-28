@@ -29,12 +29,12 @@ mkdir project
 cd project
 git clone https://github.com/ineelshah/SRIJAS.git
 cd SRIJAS
-sudo cp Frontend/index.html ../../../../var/www/html/
-sudo cp Frontend/sendData.php ../../../../var/www/html/
-cd ..
-cd ..
-sudo bash -c 'echo {"server_name" : ${aws_db_instance.default.address}, "user_name":${var.db_user_name}, "password": ${var.db_password}, "db_name": ${aws_db_instance.default.name}} > /home/ubuntu/project/SRIJAS/Frontend/parameters/parameters.json'
-sudo bash -c 'echo terraform server > /var/www/html/index.html'
+sudo chown -R ubuntu:ubuntu SRIJAS/
+cp Frontend/index.html ../../../../var/www/html/
+cp Frontend/sendData.php ../../../../var/www/html/
+echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Frontend/parameters.json
+cp Frontend/parameters.json ../../../../var/www/html/
+cd /
 mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Database/schema/srijas.sql
 EOF
 }

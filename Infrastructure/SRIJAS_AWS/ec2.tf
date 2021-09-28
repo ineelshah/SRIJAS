@@ -21,11 +21,20 @@ echo ${aws_db_instance.default.address} >/tmp/dbdomain.txt
 sudo mv /tmp/dbdomain.txt /dbdomain.txt
 #!/bin/bash
 sudo apt update -y
-sudo apt install apache2 -y
+sudo apt install lamp-server^ -y
 sudo systemctl start apache2
+sudo apt install git-all -y
+cd /home/ubuntu
+mkdir project
+cd project
+git clone https://github.com/ineelshah/SRIJAS.git
+cd SRIJAS
+sudo cp Frontend/index.html ../../../../var/www/html/
+sudo cp Frontend/sendData.php ../../../../var/www/html/
+cd ..
+cd ..
 sudo bash -c 'echo terraform server > /var/www/html/index.html'
-sudo bash -c 'echo CREATE DATABASE newTrial > /tmp/sample.sql'
-mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /tmp/sample.sql
+mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Database/schema/srijas.sql
 EOF
 }
 
@@ -48,11 +57,13 @@ sudo apt update
 sudo apt-get install -y zip unzip 
 sudo apt install -y python3
 sudo apt install -y unzip libnss3 python3-pip 
-sudo apt install python3-virtualenv -y 
+sudo apt install python3-virtualenv -y
+sudo apt install git-all -y 
 #!/bin/bash
 virtualenv -q -p /usr/bin/python3.8 $1
 source $1/bin/activate
 $1/bin/pip install selenium
+$1/bin/pip install pymysql
 cd /tmp
 sudo wget https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_linux64.zip
 sudo unzip chromedriver_linux64.zip
@@ -61,6 +72,11 @@ chromedriver --version
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb 
 google-chrome-stable --version
+cd ..
+cd /home/ubuntu
+mkdir project
+cd project
+git clone https://github.com/ineelshah/SRIJAS.git
 EOF
 }
 

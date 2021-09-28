@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2021 at 05:28 PM
+-- Generation Time: Sep 28, 2021 at 06:13 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -29,17 +29,25 @@ USE `srijas`;
 -- Table structure for table `job_master`
 --
 
-DROP TABLE IF EXISTS `job_master`;
-CREATE TABLE IF NOT EXISTS `job_master` (
-  `job_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `job_master` (
+  `job_id` int(11) NOT NULL,
   `job_title` varchar(100) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`job_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `job_master`
+--
+
+INSERT INTO job_master (job_title, is_active, created_by) VALUES
+('Software Engineer', 1, -1),
+('Software Developer', 1, -1),
+('Software Engineer Intern', 1, -1),
+('Software Developer Intern', 1, -1);
 
 -- --------------------------------------------------------
 
@@ -47,9 +55,8 @@ CREATE TABLE IF NOT EXISTS `job_master` (
 -- Table structure for table `resume_master`
 --
 
-DROP TABLE IF EXISTS `resume_master`;
-CREATE TABLE IF NOT EXISTS `resume_master` (
-  `resume_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `resume_master` (
+  `resume_id` int(11) NOT NULL,
   `resume_json` longtext NOT NULL,
   `resume_universities` varchar(1000) DEFAULT NULL,
   `resume_degrees` varchar(1000) NOT NULL,
@@ -59,8 +66,7 @@ CREATE TABLE IF NOT EXISTS `resume_master` (
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`resume_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -69,19 +75,15 @@ CREATE TABLE IF NOT EXISTS `resume_master` (
 -- Table structure for table `resume_skills`
 --
 
-DROP TABLE IF EXISTS `resume_skills`;
-CREATE TABLE IF NOT EXISTS `resume_skills` (
-  `resume_skill_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `resume_skills` (
+  `resume_skill_id` int(11) NOT NULL,
   `resume_id` int(11) NOT NULL,
   `skill_id` int(11) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`resume_skill_id`),
-  KEY `resume_skills_resume_fk` (`resume_id`),
-  KEY `resume_skills_skills_fk` (`skill_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -90,16 +92,14 @@ CREATE TABLE IF NOT EXISTS `resume_skills` (
 -- Table structure for table `skill_master`
 --
 
-DROP TABLE IF EXISTS `skill_master`;
-CREATE TABLE IF NOT EXISTS `skill_master` (
-  `skill_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `skill_master` (
+  `skill_id` int(11) NOT NULL,
   `skill_title` varchar(100) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`skill_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -108,9 +108,8 @@ CREATE TABLE IF NOT EXISTS `skill_master` (
 -- Table structure for table `user_master`
 --
 
-DROP TABLE IF EXISTS `user_master`;
-CREATE TABLE IF NOT EXISTS `user_master` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_master` (
+  `user_id` int(11) NOT NULL,
   `user_fname` varchar(50) NOT NULL,
   `user_lname` varchar(50) DEFAULT NULL,
   `user_email` varchar(50) NOT NULL,
@@ -119,9 +118,7 @@ CREATE TABLE IF NOT EXISTS `user_master` (
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(11) DEFAULT NULL,
-  `updated_at` datetime DEFAULT current_timestamp(),
-  PRIMARY KEY (`user_id`),
-  KEY `user_job_fk` (`user_preferred_job_id`)
+  `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -130,20 +127,101 @@ CREATE TABLE IF NOT EXISTS `user_master` (
 -- Table structure for table `user_resume`
 --
 
-DROP TABLE IF EXISTS `user_resume`;
-CREATE TABLE IF NOT EXISTS `user_resume` (
-  `user_resume_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_resume` (
+  `user_resume_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `resume_id` int(11) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_by` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`user_resume_id`),
-  KEY `user_resume_user_fk` (`user_id`),
-  KEY `user_resume_resume_fk` (`resume_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `job_master`
+--
+ALTER TABLE `job_master`
+  ADD PRIMARY KEY (`job_id`);
+
+--
+-- Indexes for table `resume_master`
+--
+ALTER TABLE `resume_master`
+  ADD PRIMARY KEY (`resume_id`);
+
+--
+-- Indexes for table `resume_skills`
+--
+ALTER TABLE `resume_skills`
+  ADD PRIMARY KEY (`resume_skill_id`),
+  ADD KEY `resume_skills_resume_fk` (`resume_id`),
+  ADD KEY `resume_skills_skills_fk` (`skill_id`);
+
+--
+-- Indexes for table `skill_master`
+--
+ALTER TABLE `skill_master`
+  ADD PRIMARY KEY (`skill_id`);
+
+--
+-- Indexes for table `user_master`
+--
+ALTER TABLE `user_master`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `user_job_fk` (`user_preferred_job_id`);
+
+--
+-- Indexes for table `user_resume`
+--
+ALTER TABLE `user_resume`
+  ADD PRIMARY KEY (`user_resume_id`),
+  ADD KEY `user_resume_user_fk` (`user_id`),
+  ADD KEY `user_resume_resume_fk` (`resume_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `job_master`
+--
+ALTER TABLE `job_master`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `resume_master`
+--
+ALTER TABLE `resume_master`
+  MODIFY `resume_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `resume_skills`
+--
+ALTER TABLE `resume_skills`
+  MODIFY `resume_skill_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `skill_master`
+--
+ALTER TABLE `skill_master`
+  MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_master`
+--
+ALTER TABLE `user_master`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_resume`
+--
+ALTER TABLE `user_resume`
+  MODIFY `user_resume_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

@@ -25,6 +25,7 @@ def get_dict_with_list_of_skills_from_description(links_description_dict, total_
 def get_list_of_matched_skills(description, total_skills):
     list_of_skills_matched = []
     description = description.upper()
+    print(description)
     for skill in total_skills:
         if description.find(total_skills[skill].upper()):
             list_of_skills_matched.append(skill)

@@ -1,15 +1,61 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
-import docx
-mydoc = docx.Document()
+import mysql.connector
+from mysql.connector import Error
+import keyword_extraction_modules as ke
+#######################################################DATABASE OPERATIONS########################################################################################
+
+
+############################################creating connection for database#################################
+try:
+    connection = mysql.connector.connect(host='localhost',database='Srijas',user='root',password='')
+    if connection.is_connected():
+        print("You're connected to database:")
+except Error as e:
+    print("Error while connecting to MySQL", e)
+
+
+########################################querying database###################################
+#fetch the master set of skills
+sql_select_Query = "select DISTINCT skill_id,skill_title from skill_master"    
+cursor=connection.cursor()
+cursor.execute(sql_select_Query)    
+records=cursor.fetchall()
+all_skills={}
+for row in records:
+    all_skills[row[0]]=row[1]    
+print("All skills",all_skills)
+
+sql_select_Query2="select  resume_id,skill_id from resume_skills"
+cursor.execute(sql_select_Query2)
+records2=cursor.fetchall()
+resume_skills={}
+for row in records2:
+    if(row[0]) in resume_skills:
+        resume_skills[row[0]].append(row[1])
+    else:
+        resume_skills[row[0]]=[row[1]]
+print("Resume skills",resume_skills)
+#######################################################################################################################################################
+
+
+##########################################################JOB DESCRIPTION SCRAPING###################################################################
+
+
+
+
+
 username="programmer13651@gmail.com"
-pwd=""
+pwd="Programmer@123"
+no_of_jobs_to_retrieve=2
+count=0
+searchquery="Software Engineer"
 options = Options()
-options.headless = False
+options.headless = True
 options.add_argument("--window-size=1920,1200")
-browser = webdriver.Chrome(options=options, executable_path="D:\ChromeDriver\chromedriver.exe")
-#browser.get('https://www.linkedin.com/jobs/jobs-in-raleigh-nc?trk=homepage-basic_intent-module-jobs&position=1&pageNum=0')
+browser = webdriver.Chrome(options=options, executable_path="D:\chromedriver.exe")
+match_threshold=1
 
 ################################Sign IN#################################################
 browser.get('https://www.linkedin.com/checkpoint/rm/sign-in-another-account?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
@@ -19,62 +65,61 @@ pwd_ip=browser.find_element_by_id('password')
 pwd_ip.send_keys(pwd)
 sign_in_button=browser.find_element_by_xpath("//button[@data-litms-control-urn='login-submit']")
 sign_in_button.click();
+
+
+######################################################## traverse to job lisitng page #########################
 browser.get('https://www.linkedin.com/jobs/jobs-in-raleigh-nc?trk=homepage-basic_intent-module-jobs&position=1&pageNum=0')
 time.sleep(4)
-searchquery="Software Engineer"
-no_of_jobs_to_retrieve=5
-count=0
-#setting job filter value
-job_description=browser.find_element_by_xpath("//input[@id='jobs-search-box-keyword-id-ember40']").send_keys(searchquery)
+job_description=browser.find_element_by_xpath("//input[contains(@id,'jobs-search-box-keyword-id')]").send_keys(searchquery)
 #inserting job filter value
 search_button=browser.find_element_by_class_name("jobs-search-box__submit-button")
 search_button.click()
 time.sleep(3)#give time to load search query results
-###################################################################################################################################
 
-###############duration filter######################
-#job_filter=browser.find_element_by_xpath("//input[@id='f_TPR-0']")
-#submit_job_filter=browser.find_element_by_xpath("//button[@data-tracking-control-name='public_jobs_f_TPR']")
-#submit_job_filter.send_keys(job_filter)
-#submit_job_filter.click()
-
-############################################scrape the description#############################################
-#retrieve job links
+############################################scroll to the bottom of the page#############################################
+recentList = browser.find_elements_by_xpath("//section[@aria-label='pagination']") 
+for list in recentList :
+        browser.execute_script("arguments[0].scrollIntoView();", list )
+time.sleep(5)
+####################################retrieve job links####################################################
 job_cards=browser.find_elements_by_xpath("//a[@class='disabled ember-view job-card-container__link job-card-list__title']")
 href_arr=[]
 for i in job_cards:
     href_arr.append(i.get_attribute("href"))
-print(len(href_arr))#=25
- #looping through every job listing to scrape relevant data
-data=[]
+print(len(href_arr))
+
+ ################looping through every job listing to scrape relevant data##################################
+
+final={}
 listele=[]
 for url in href_arr:
      browser.get(url)
      time.sleep(5)
-     show_more_button=browser.find_element_by_xpath("//button[@id='ember48']")
+     show_more_button=browser.find_element_by_xpath("//button[contains(@aria-label,'Click to see more description')]")
      show_more_button.click()
      list_ele=browser.find_elements_by_xpath("//article//li")
-     ##for each job lisitng loop through all list items and add the text
-     for li in list_ele:
-         data.append(li.text);
+    ############for each job lisitng loop through all list items and add the text######################
+     data=[]
+     datastr=""
+     for li in list_ele: 
+         data.append(li.text)
+     for val in data:
+         datastr+=val + " "
      time.sleep(5)
      count+=1
      if(count==no_of_jobs_to_retrieve):
-         break
-mydoc.add_paragraph(data)
-mydoc.save("D:/SE/Project/proj_codebase/SRIJAS/Scraped_Data_Linkedin")
-print(data)
-#browser.close()
+         break 
+     final[url]=datastr
+     #print(datastr,url,final)
+     
+
+#print(resume_skills,final,connection,all_skills,match_threshold)
+
+print(ke.get_user_id_to_list_of_job_ids(resume_skills,final,connection,all_skills,match_threshold))
+
 
           
           
-          
-
-
-
-
-
-
 
 
 

@@ -4,10 +4,13 @@ $inputEmail = $_POST["inputEmail"];
 // $jobType = $_POST["inputJobTypeId"];
 $inputJobTypeId = 1;
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "srijas";
+$paramsFile = file_get_contents("/parameters/parameters.json")
+$params = json_decode($paramsFile)
+
+$servername = $params["server_name"];
+$username = $params["user_name"];
+$password = $params["password"];
+$db = $params["db_name"];
 $conn = new mysqli($servername, $username, $password, $db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);

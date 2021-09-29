@@ -13,7 +13,7 @@ import smtplib
 
 ############################################creating connection for database#################################
 import json
-properties = open('properties.json')
+properties = open('parameters.json')
 data = json.load(properties)
 
 server_name = data['server_name']

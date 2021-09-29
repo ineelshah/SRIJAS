@@ -17,7 +17,7 @@ S.No. | Section
 3 | [More things to consider with a PR](#Some-other-things-to-consider-when-merging-a-pull-request)
 4 | [Where to Contribute?](#Where-to-Contribute)
 5 | [Setting up a development environment](#Setting-up-a-development-environment)
-6 | [Credit](#Credit-for-the-CONTRIBUTING.md-file)
+6 | [Credit](#Credit-for-the-CONTRIBUTING-file)
 
 <br></br>
 ### Welcome! 
@@ -99,7 +99,7 @@ Download Selenium: https://www.selenium.dev/downloads/
 ![Success](https://tenor.com/view/success-kid-hells-yes-i-did-it-fuck-yeah-success-gif-5207407.gif)
 
 <br></br>
-### Credit for the CONTRIBUTING.md file
+### Credit for the CONTRIBUTING file
 * [The atom repository](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#pull-requests)
 * [PurpleBooth](https://gist.github.com/PurpleBooth/b24679402957c63ec426#scope)
 * [GitHub docs](https://github.com/github/docs/blob/main/CONTRIBUTING.md)

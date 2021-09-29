@@ -22,7 +22,7 @@
   </div>
 
 <div class="align-items-center" align = "center">
-  <form method="post" action="sendData.php">
+  <form method="post" enctype="multipart/form-data" action="sendData.php">
 
     <div class="form-group col-4">
       <label for="inputName">Name</label>
@@ -45,11 +45,11 @@
 
     <div class="form-group  col-4">
       <label for="uploadResume">Upload Your Resume</label>
-      <input type="file" class="form-control-file" id="uploadResume">
+      <input type="file" class="form-control-file" id="uploadResume" name="uploadResume">
     </div>
 
     <div class="col-auto my-1">
-      <button type="submit" id="submit" class="btn btn-primary col-auto">Submit</button>
+      <button type="submit" value="Submit" id="submit" name="submit" class="btn btn-primary col-auto">Submit</button>
     </div>
 
   </form>

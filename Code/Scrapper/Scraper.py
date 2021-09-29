@@ -18,7 +18,6 @@ import json
 
 properties = open('parameters.json')
 data = json.load(properties)
-
 server_name = data['server_name']
 user_name = data['user_name']
 password = data['password']
@@ -72,14 +71,14 @@ print("Resume id and email id",email_id_list)
 
 
 username="srijas.alerts@gmail.com"
-pwd="SRIJASGMAILPWD"
+pwd=""
 no_of_jobs_to_retrieve=5
 count=0
 searchquery="Software Engineer"
 options = Options()
 options.headless = False
 options.add_argument("--window-size=1920,1200")
-browser = webdriver.Chrome(options=options, executable_path="D:/chromedriver.exe")
+browser = webdriver.Chrome(options=options, executable_path="../../../../../../usr/bin/chromedriver)
 match_threshold=1
 
 ################################Sign IN#################################################

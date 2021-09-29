@@ -1,8 +1,9 @@
 <?php
 include 'vendor/autoload.php';
-
+var_dump($_POST);
 $inputName = $_POST["inputName"];
 $inputEmail = $_POST["inputEmail"];
+$inputJobTypeId = $_POST["inputJobTypeId"];
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES['uploadResume']['name']);
 $uploadOk = 1;
@@ -25,7 +26,7 @@ if ($uploadOk == 0) {
 }
 
 
-$inputJobTypeId = 1;
+
 
 $paramsFile = file_get_contents("parameters.json");
 $params = json_decode($paramsFile, true);
@@ -145,4 +146,6 @@ else{
 $stmt->close();
 
 $conn->close();
+header("Location:index.php");
+exit;
 ?>

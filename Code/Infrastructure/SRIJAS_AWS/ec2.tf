@@ -36,11 +36,11 @@ mkdir project
 cd project
 git clone https://github.com/ineelshah/SRIJAS.git
 sudo chown -R ubuntu:ubuntu SRIJAS/
-cd SRIJAS
-echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Frontend/parameters.json
-sudo cp -a Frontend/. ../../../../var/www/html/
+cd SRIJAS/Code
+echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Web_app/parameters.json
+sudo cp -a Web_app/. ../../../../../var/www/html/
 cd /
-mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Database/schema/srijas.sql
+mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Code/Database/schema/srijas.sql
 EOF
 }
 
@@ -70,8 +70,9 @@ virtualenv -q -p /usr/bin/python3.8 $1
 source $1/bin/activate
 $1/bin/pip install selenium
 $1/bin/pip install pymysql
+$1/bin/pip install mysql-connector-python
 cd /tmp
-sudo wget https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_linux64.zip
+sudo wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
 sudo unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/bin/chromedriver
 chromedriver --version
@@ -83,9 +84,10 @@ cd /home/ubuntu
 mkdir project
 cd project
 git clone https://github.com/ineelshah/SRIJAS.git
-cd SRIJAS
-echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Code/parameters.json
-crontab -l | { cat; echo "0 9 * * * python3 /home/ubuntu/project/SRIJAS/email_service/email_service.py"; } | crontab -
+cd SRIJAS/Code
+echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Scrapper/parameters.json
+crontab -l | { cat; echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/Scrapper.py"; } | crontab -
+crontab -l | { cat; echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/scrapper_glassdoor.py"; } | crontab -
 EOF
 }
 

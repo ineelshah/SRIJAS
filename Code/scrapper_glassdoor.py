@@ -108,29 +108,60 @@ def get_jobs(keyword,num_jobs,verbose):
              button = driver.find_element_by_xpath('//*[@id="JobDescriptionContainer"]/div[2]')
              button.click()
              job_description = driver.find_element_by_xpath('//*[@id="JobDescriptionContainer"]/div[1]').text
-             print(job_description)
+            # print(job_description)
              jobs.append(job_description)
-             #result = ''.join(job_description)
-             #print(result)
              final_dict[i] = job_description
-             #print(jobs)
-     #print(final_dict)
      total = {}
-     email_list=[]
      total = ke.get_user_id_to_list_of_job_ids(mapping_dict,final_dict,connection,final_skills,threshold)
      print(total)
+#================= send email to users======================================================
+     port = 587
+     smtp_server = "smtp.gmail.com"
+     login = "srijas.alerts@gmail.com"
+     password = "SRIJASGMAILPWD"
+     sender = "srijas.alerts@gmail.com"
      for key in total:
-         index = key
-         print(index)
-         email_list.append(email_dict[index])
-     print(email_list)
-
+         if key in email_dict:
+             receiver = ''.join(email_dict[key])
+             print(receiver)
+             msg = MIMEMultipart()
+             msg['From'] = sender
+             msg['To'] = receiver
+             msg['Subject'] = 'JOB Listing'
+             body = """Hi \n PFA the attached list of jobs that match your resume \n """
+             temp_str = "" 
+             list_curr_links = total[key]
+             counter=1
+             for link in list_curr_links:
+                 temp_str+= (str(counter) + link + '\n')
+                 counter+=1
+             body+=temp_str
+             msg.attach(MIMEText(body, 'plain'))
+             text = msg.as_string()
+         
+         try:
+             server = smtplib.SMTP(smtp_server, port)
+             server.connect(smtp_server,port)
+             server.ehlo()
+             server.starttls()
+             server.ehlo()
+             server.login(login, password)
+             server.sendmail(sender, receiver, text)
+             server.quit()                                                                            # tell the script to report if your message was sent or which errors need to be fixed
+             print('Sent')
+         except (gaierror, ConnectionRefusedError):
+             print('Failed to connect to the server. Bad connection settings?')
+         except smtplib.SMTPServerDisconnected as e:
+             print('Failed to connect to the server. Wrong user/password?')
+             print(str(e))
+         except smtplib.SMTPException as e:
+             print('SMTP error occurred: ' + str(e))
 
 
      return jobs
 
 
-df = get_jobs("Software Engineer",2,False)
+df = get_jobs("Software Engineer",5,False)
 
      
      

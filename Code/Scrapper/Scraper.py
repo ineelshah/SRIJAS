@@ -72,7 +72,7 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     options = Options()
     options.headless = True
     options.add_argument("--window-size=1920,1200")
-    browser = webdriver.Chrome(options=options, executable_path="D:/chromedriver.exe")
+    browser = webdriver.Chrome(options=options, executable_path="../../../../../../usr/bin/chromedriver")
     match_threshold=1
     
     ################################Sign IN#################################################

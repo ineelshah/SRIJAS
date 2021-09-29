@@ -1,6 +1,6 @@
 <?php
 include 'vendor/autoload.php';
-echo "1234";
+
 $inputName = $_POST["inputName"];
 $inputEmail = $_POST["inputEmail"];
 $target_dir = "uploads/";
@@ -125,7 +125,6 @@ print_r($skill_array);
 
 $sql = "SELECT MAX(user_id) AS user_max FROM user_master";
 $result = $conn->query($sql);
-var_dump($result);
 $user_max = $result->fetch_assoc()["user_max"];
 if($user_max>1){
 }
@@ -133,8 +132,6 @@ else{
   $user_max = 1;
 }
 
-echo $user_max;
-echo $max;
 $stmt = $conn->prepare("INSERT INTO user_resume (user_id, resume_id, is_active, created_by, updated_by)
   VALUES (?, ?, ?, ?, ?)");
 

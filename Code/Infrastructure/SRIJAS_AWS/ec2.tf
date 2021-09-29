@@ -38,7 +38,7 @@ git clone https://github.com/ineelshah/SRIJAS.git
 sudo chown -R ubuntu:ubuntu SRIJAS/
 cd SRIJAS/Code
 echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Web_app/parameters.json
-sudo cp -a Web_app/. ../../../../var/www/html/
+sudo cp -a Web_app/. ../../../../../var/www/html/
 cd /
 mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Code/Database/schema/srijas.sql
 EOF
@@ -70,6 +70,7 @@ virtualenv -q -p /usr/bin/python3.8 $1
 source $1/bin/activate
 $1/bin/pip install selenium
 $1/bin/pip install pymysql
+$1/bin/pip install mysql-connector-python
 cd /tmp
 sudo wget https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_linux64.zip
 sudo unzip chromedriver_linux64.zip

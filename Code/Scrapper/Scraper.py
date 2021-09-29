@@ -8,11 +8,14 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
 import smtplib
+import json
 #######################################################DATABASE OPERATIONS########################################################################################
 
 
 ############################################creating connection for database#################################
-import json
+
+    
+
 properties = open('parameters.json')
 data = json.load(properties)
 
@@ -68,13 +71,13 @@ print("Resume id and email id",email_id_list)
 
 
 
-username="programmer13651@gmail.com"
-pwd="Programmer@123"
+username="srijas.alerts@gmail.com"
+pwd="SRIJASGMAILPWD"
 no_of_jobs_to_retrieve=5
 count=0
 searchquery="Software Engineer"
 options = Options()
-options.headless = True
+options.headless = False
 options.add_argument("--window-size=1920,1200")
 browser = webdriver.Chrome(options=options, executable_path="D:/chromedriver.exe")
 match_threshold=1

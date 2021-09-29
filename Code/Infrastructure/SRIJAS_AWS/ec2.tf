@@ -71,10 +71,13 @@ source $1/bin/activate
 $1/bin/pip install selenium
 $1/bin/pip install pymysql
 $1/bin/pip install mysql-connector-python
+$1/bin/pip install webdriver_manager
 cd /tmp
 sudo wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
 sudo unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/bin/chromedriver
+sudo chown root:root /usr/bin/chromedriver
+sudo chmod +x /usr/bin/chromedriver
 chromedriver --version
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb 
@@ -86,6 +89,7 @@ cd project
 git clone https://github.com/ineelshah/SRIJAS.git
 cd SRIJAS/Code
 echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Scrapper/parameters.json
+cd /
 crontab -l | { cat; echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/Scrapper.py"; } | crontab -
 crontab -l | { cat; echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/scrapper_glassdoor.py"; } | crontab -
 EOF

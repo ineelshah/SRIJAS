@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
 import smtplib
+from webdriver_manager.chrome import ChromeDriverManager
 import json
 #######################################################DATABASE OPERATIONS########################################################################################
 
@@ -76,9 +77,11 @@ no_of_jobs_to_retrieve=5
 count=0
 searchquery="Software Engineer"
 options = Options()
-options.headless = False
 options.add_argument("--window-size=1920,1200")
-browser = webdriver.Chrome(options=options, executable_path="../../../../../../usr/bin/chromedriver)
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+browser = webdriver.Chrome(options=options, executable_path=executable_path=ChromeDriverManager().install())
 match_threshold=1
 
 ################################Sign IN#################################################

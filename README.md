@@ -8,6 +8,8 @@
 ![Github closes issues](https://img.shields.io/github/issues-closed-raw/ineelshah/SRIJAS)
 ![Github pull requests](https://img.shields.io/github/issues-pr/ineelshah/SRIJAS)
 ![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/ineelshah/SRIJAS)
+[![DOI](https://zenodo.org/badge/408230160.svg)](https://zenodo.org/badge/latestdoi/408230160)
+
 
 # S.R.I.J.A.S.
 Smart-Resume-Interpreter-And-Job-Alert-System

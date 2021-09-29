@@ -37,15 +37,8 @@ cd project
 git clone https://github.com/ineelshah/SRIJAS.git
 sudo chown -R ubuntu:ubuntu SRIJAS/
 cd SRIJAS
-cp Frontend/index.html ../../../../var/www/html/
-cp Frontend/sendData.php ../../../../var/www/html/
 echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Frontend/parameters.json
-cp Frontend/parameters.json ../../../../var/www/html/
-cp Frontend/composer.json ../../../../var/www/html/
-cd /
-cd /var/www/html/
-y|composer update
-y|composer update smalot/pdfparser
+sudo cp -a Frontend/. ../../../../var/www/html/
 cd /
 mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Database/schema/srijas.sql
 EOF

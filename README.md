@@ -3,6 +3,11 @@
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Github](https://img.shields.io/badge/language-python-red.svg)
+![GitHub issues](https://img.shields.io/github/issues-raw/ineelshah/SRIJAS)
+![Github closes issues](https://img.shields.io/github/issues-closed-raw/ineelshah/SRIJAS)
+![Github pull requests](https://img.shields.io/github/issues-pr/ineelshah/SRIJAS)
+![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/ineelshah/SRIJAS)
 
 # S.R.I.J.A.S.
 Smart-Resume-Interpreter-And-Job-Alert-System

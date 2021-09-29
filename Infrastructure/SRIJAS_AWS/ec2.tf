@@ -84,7 +84,8 @@ mkdir project
 cd project
 git clone https://github.com/ineelshah/SRIJAS.git
 cd SRIJAS
-echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > code/parameters.json
+echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Code/parameters.json
+crontab -l | { cat; echo "0 9 * * * python3 /home/ubuntu/project/SRIJAS/email_service/email_service.py"; } | crontab -
 EOF
 }
 

@@ -1,6 +1,34 @@
 <html lang="en">
 <head>
 
+<?php
+
+$paramsFile = file_get_contents("parameters.json");
+$params = json_decode($paramsFile, true);
+
+$servername = $params["server_name"];
+$username = $params["user_name"];
+$password = $params["password"];
+$db = $params["db_name"];
+
+$conn = new mysqli($servername, $username, $password, $db);
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$sql = "SELECT * FROM job_master";
+$result = $conn->query($sql);
+$skill_array = array();
+$skill_ids = array();
+$len = $result->num_rows;
+if ($len > 0) {
+  while($row = $result->fetch_assoc()) {
+    array_push($skill_array, $row["job_title"]);
+    array_push($skill_ids, $row["job_id"]);
+  }
+}
+$conn->close();
+?>
+
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style media="screen">
@@ -26,30 +54,31 @@
 
     <div class="form-group col-4">
       <label for="inputName">Name</label>
-      <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter Your Name" text-align="center">
+      <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter Your Name" text-align="center" required>
     </div>
 
     <div class="form-group  col-4">
       <label for="inputEmail">Email address</label>
-      <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Enter email">
+      <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Enter email" required>
     </div>
 
     <div class="col-auto my-1 col-4">
       <label for="inputJobTypeId">Type Of Job You Are Looking For: </label>
-      <select class="custom-select mr-sm-2" id="inputJobTypeId" name="inputJobTypeId">
+      <select class="custom-select mr-sm-2" id="inputJobTypeId" name="inputJobTypeId" required>
         <option selected>Choose...</option>
-        <option value="1">
-          <?php
-          echo "Software Engineering Internz";
-          ?>
-        </option>
-        <option value="2">Software Engineering (Full-Time)</option>
+        <?php
+        $count = 0;
+        foreach($skill_array as $skill){
+        echo "<option value='".$skill_ids[$count]."'>".$skill."</option>";
+        $count = $count+1;
+      }
+      ?>
       </select>
     </div>
 
     <div class="form-group  col-4">
       <label for="uploadResume">Upload Your Resume</label>
-      <input type="file" class="form-control-file" id="uploadResume" name="uploadResume">
+      <input type="file" class="form-control-file" id="uploadResume" name="uploadResume" required>
     </div>
 
     <div class="col-auto my-1">

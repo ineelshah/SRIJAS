@@ -62,7 +62,7 @@ no_of_jobs_to_retrieve=2
 count=0
 searchquery="Software Engineer"
 options = Options()
-options.headless = True
+options.headless = False
 options.add_argument("--window-size=1920,1200")
 browser = webdriver.Chrome(options=options, executable_path="D:\chromedriver.exe")
 match_threshold=1
@@ -142,36 +142,36 @@ sender = "srijas.alerts@gmail.com"
 for key in final_result:
      if key in email_id_list:
          receiver =email_id_list[key]
-     print(receiver)    
-     msg = MIMEMultipart()
-     msg['From'] = sender
-     msg['To'] = receiver
-     msg['Subject'] = 'Job Lisitngs'
-     body = """Hi,
-                 PFA the attached list of jobs that match your resume"""
-     msg.attach(MIMEText(body, 'plain'))
-     text = msg.as_string()
-      
-     try:
-          server = smtplib.SMTP(smtp_server, port)
-          server.connect(smtp_server,port)
-          server.ehlo()
-          server.starttls()
-          server.ehlo()
-          server.login(login, password)
-          server.sendmail(sender, receiver, text)
-          server.quit()
+         print(receiver)    
+         msg = MIMEMultipart()
+         msg['From'] = sender
+         msg['To'] = receiver
+         msg['Subject'] = 'Job Lisitngs'
+         body = """Hi,
+                     PFA the attached list of jobs that match your resume"""
+         msg.attach(MIMEText(body, 'plain'))
+         text = msg.as_string()
+          
+         try:
+              server = smtplib.SMTP(smtp_server, port)
+              server.connect(smtp_server,port)
+              server.ehlo()
+              server.starttls()
+              server.ehlo()
+              server.login(login, password)
+              server.sendmail(sender, receiver, text)
+              server.quit()
       
       
                                                                                   # tell the script to report if your message was sent or which errors need to be fixed
-          print('Sent')
-     except (gaierror, ConnectionRefusedError):
-          print('Failed to connect to the server. Bad connection settings?')
-     except smtplib.SMTPServerDisconnected as e:
-          print('Failed to connect to the server. Wrong user/password?')
-          print(str(e))
-     except smtplib.SMTPException as e:
-          print('SMTP error occurred: ' + str(e))
+              print('Sent')
+         except (gaierror, ConnectionRefusedError):
+              print('Failed to connect to the server. Bad connection settings?')
+         except smtplib.SMTPServerDisconnected as e:
+              print('Failed to connect to the server. Wrong user/password?')
+              print(str(e))
+         except smtplib.SMTPException as e:
+              print('SMTP error occurred: ' + str(e))
  
  
  

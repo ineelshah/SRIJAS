@@ -102,6 +102,28 @@ CREATE TABLE `skill_master` (
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("C", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Java", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Python", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("C++", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("C#", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Visual Basic", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("JavaScript", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Assembly Language", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("PHP", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("SQL", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Classic Visual Basic", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Delphi/Object Pascal", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Ruby", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Go", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Swift", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("R", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Groovy", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Perl", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("MATLAB", 1, -1);
+INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Fortran", 1, -1);
+
 -- --------------------------------------------------------
 
 --

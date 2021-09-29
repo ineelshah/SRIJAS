@@ -25,10 +25,11 @@ def get_dict_with_list_of_skills_from_description(links_description_dict, total_
 def get_list_of_matched_skills(description, total_skills):
     list_of_skills_matched = []
     description = description.upper()
-    print(description)
+    desc_list = description.split(" ")
     for skill in total_skills:
-        if description.find(total_skills[skill].upper()):
+        if (total_skills[skill].upper() in desc_list) or ((total_skills[skill].upper() + ".") in desc_list) or (total_skills[skill].upper().center(1) in desc_list):
             list_of_skills_matched.append(skill)
+    #print(list_of_skills_matched)
     return list_of_skills_matched
 
 def match_both_lists(list_of_skills_in_resume, list_of_skills_in_description, threshold, total_skill_count):
@@ -41,8 +42,8 @@ def match_both_lists(list_of_skills_in_resume, list_of_skills_in_description, th
 
 if __name__ == '__main__':
     resume_skills_dict = {"res1": [1, 2, 3, 4]}
-    links_description_dict = {"link1": "This description has java and python."}
-    total_skills = {1: "Java", 2: "Python"}
+    links_description_dict = {"link1": "This description has java and python class."}
+    total_skills = {1: "Java", 2: "C"}
     threshold = 50
     db_connection = ""
     print(get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold))

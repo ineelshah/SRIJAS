@@ -27,7 +27,7 @@ for row in records:
     all_skills[row[0]]=row[1]    
 print("All skills",all_skills)
 
-sql_select_Query2="select  resume_id,skill_id from resume_skills"
+sql_select_Query2="select  resume_id,skill_id from resume_skills where is_active=1"
 cursor.execute(sql_select_Query2)
 records2=cursor.fetchall()
 resume_skills={}
@@ -36,6 +36,10 @@ for row in records2:
         resume_skills[row[0]].append(row[1])
     else:
         resume_skills[row[0]]=[row[1]]
+        
+sql_select_Query3="SELECT resume_id,user_email from user_master um join user_resume ur on um.user_id=ur.user_id"
+cursor.execute(sql_select_Query2)
+records_email=cursor.fetchall()
 print("Resume skills",resume_skills)
 #######################################################################################################################################################
 

@@ -4,8 +4,8 @@ $inputEmail = $_POST["inputEmail"];
 // $jobType = $_POST["inputJobTypeId"];
 $inputJobTypeId = 1;
 
-$paramsFile = file_get_contents("/parameters/parameters.json")
-$params = json_decode($paramsFile)
+$paramsFile = file_get_contents("parameters.json");
+$params = json_decode($paramsFile, true);
 
 $servername = $params["server_name"];
 $username = $params["user_name"];

@@ -96,7 +96,7 @@ job_cards=browser.find_elements_by_xpath("//a[@class='disabled ember-view job-ca
 href_arr=[]
 for i in job_cards:
     href_arr.append(i.get_attribute("href"))
-print(len(href_arr))
+#print(len(href_arr))
 
  ################looping through every job listing to scrape relevant data##################################
 
@@ -120,27 +120,66 @@ for url in href_arr:
      if(count==no_of_jobs_to_retrieve):
          break 
      final[url]=datastr
+#     print(datastr,url,final)
+     
 
+#print(resume_skills,final,connection,all_skills,match_threshold)
 
 final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final,connection,all_skills,match_threshold)
-
-
+#print(final_result)
 
 
 
 ##########################################################EMAIL SERVICE######################################################################
           
           
-##genrating receiever email ids
-for key,value in final_result:    
-    print(email_id_list[key])
-
-
-
-
-
-
-
+ ##generating receiever email ids
+port = 587
+smtp_server = "smtp.gmail.com"
+login = "srijas.alerts@gmail.com"
+password = "srijasgmailpwd"
+sender = "srijas.alerts@gmail.com"
+for key in final_result:
+     if key in email_id_list:
+         receiver =email_id_list[key]
+     print(receiver)    
+     msg = MIMEMultipart()
+     msg['From'] = sender
+     msg['To'] = receiver
+     msg['Subject'] = 'Job Lisitngs'
+     body = """Hi,
+                 PFA the attached list of jobs that match your resume"""
+     msg.attach(MIMEText(body, 'plain'))
+     text = msg.as_string()
+      
+     try:
+          server = smtplib.SMTP(smtp_server, port)
+          server.connect(smtp_server,port)
+          server.ehlo()
+          server.starttls()
+          server.ehlo()
+          server.login(login, password)
+          server.sendmail(sender, receiver, text)
+          server.quit()
+      
+      
+                                                                                  # tell the script to report if your message was sent or which errors need to be fixed
+          print('Sent')
+     except (gaierror, ConnectionRefusedError):
+          print('Failed to connect to the server. Bad connection settings?')
+     except smtplib.SMTPServerDisconnected as e:
+          print('Failed to connect to the server. Wrong user/password?')
+          print(str(e))
+     except smtplib.SMTPException as e:
+          print('SMTP error occurred: ' + str(e))
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 

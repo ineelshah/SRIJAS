@@ -1,3 +1,6 @@
+![SRIJAS_LOGO](https://user-images.githubusercontent.com/40118578/135184051-73acf9be-07c1-4c98-9730-68fa161f6a1b.png)
+
+
 # S.R.I.J.A.S.
 Smart-Resume-Interpreter-And-Job-Alert-System
 

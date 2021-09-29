@@ -145,4 +145,6 @@ else{
 $stmt->close();
 
 $conn->close();
+header("Location:index.php");
+exit;
 ?>

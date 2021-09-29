@@ -4,6 +4,10 @@ import time
 import mysql.connector
 from mysql.connector import Error
 import keyword_extraction_modules as ke
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from socket import gaierror
+import smtplib
 #######################################################DATABASE OPERATIONS########################################################################################
 
 
@@ -36,11 +40,13 @@ for row in records2:
         resume_skills[row[0]].append(row[1])
     else:
         resume_skills[row[0]]=[row[1]]
-        
+email_id_list={}  
 sql_select_Query3="SELECT resume_id,user_email from user_master um join user_resume ur on um.user_id=ur.user_id"
-cursor.execute(sql_select_Query2)
+cursor.execute(sql_select_Query3)
 records_email=cursor.fetchall()
-print("Resume skills",resume_skills)
+for row in records_email:
+    email_id_list[row[0]]=row[1]
+print("Resume id and email id",email_id_list)
 #######################################################################################################################################################
 
 
@@ -114,17 +120,20 @@ for url in href_arr:
      if(count==no_of_jobs_to_retrieve):
          break 
      final[url]=datastr
-     #print(datastr,url,final)
-     
-
-#print(resume_skills,final,connection,all_skills,match_threshold)
-
-print(ke.get_user_id_to_list_of_job_ids(resume_skills,final,connection,all_skills,match_threshold))
 
 
+final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final,connection,all_skills,match_threshold)
+
+
+
+
+
+##########################################################EMAIL SERVICE######################################################################
           
           
-
+##genrating receiever email ids
+for key,value in final_result:    
+    print(email_id_list[key])
 
 
 

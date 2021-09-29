@@ -1,6 +1,9 @@
 ![SRIJAS_LOGO](https://user-images.githubusercontent.com/40118578/135184051-73acf9be-07c1-4c98-9730-68fa161f6a1b.png)
 
 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # S.R.I.J.A.S.
 Smart-Resume-Interpreter-And-Job-Alert-System
 

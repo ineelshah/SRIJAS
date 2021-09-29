@@ -16,12 +16,20 @@ import smtplib
 # ===============Connector Script ==============================================================
 import mysql.connector
 from mysql.connector import Error
+import json
+properties = open('properties.json')
+data = json.load(properties)
+
+server_name = data['server_name']
+user_name = data['user_name']
+password = data['password']
+db_name = data['db_name']
 
 try:
-    connection = mysql.connector.connect(host='localhost',
-                                          database='srijas',
-                                          user='root',
-                                          password='')
+    connection = mysql.connector.connect(host=server_name,
+                                          database=db_name,
+                                          user=user_name,
+                                          password=password)
     if connection.is_connected():
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
@@ -32,7 +40,7 @@ try:
 
 except Error as e:
     print("Error while connecting to MySQL", e)
-    
+
 
 # ================= fetch total skills database ==========================================================
 
@@ -58,7 +66,7 @@ for row in records:
         mapping_dict[row[0]].append(row[1])
     else:
         mapping_dict[row[0]] = [row[1]]
-print(mapping_dict)    
+print(mapping_dict)
 
 #======================= fetch user email ids ==================================
 
@@ -71,7 +79,7 @@ for row in details:
         email_dict[row[0]].append(row[1])
     else:
         email_dict[row[0]] = [row[1]]
-print(email_dict)      
+print(email_dict)
 
 #============================================================================================
 
@@ -88,7 +96,7 @@ def get_jobs(keyword,num_jobs,verbose):
      driver.get(url)
      #jobs = []
      job_urls = []
-     c=0  
+     c=0
      job_buttons = driver.find_elements_by_xpath('.//a[@class = "jobLink job-search-key-1rd3saf eigr9kq1"]')  #jl for Job Listing. These are the buttons we're going to click.
      time.sleep(2)
      print(len(job_buttons))
@@ -98,9 +106,9 @@ def get_jobs(keyword,num_jobs,verbose):
             c=c+1
             if(c>=num_jobs):
                break;
-               
+
  ### Iterate through each url and get the job description
-     for i in job_urls: 
+     for i in job_urls:
              time.sleep(5)
              #print(i)
              jobs = []
@@ -129,7 +137,7 @@ def get_jobs(keyword,num_jobs,verbose):
              msg['To'] = receiver
              msg['Subject'] = 'JOB Listing'
              body = """Hi \n PFA the attached list of jobs that match your resume \n """
-             temp_str = "" 
+             temp_str = ""
              list_curr_links = total[key]
              counter=1
              for link in list_curr_links:
@@ -138,7 +146,7 @@ def get_jobs(keyword,num_jobs,verbose):
              body+=temp_str
              msg.attach(MIMEText(body, 'plain'))
              text = msg.as_string()
-         
+
          try:
              server = smtplib.SMTP(smtp_server, port)
              server.connect(smtp_server,port)
@@ -162,6 +170,3 @@ def get_jobs(keyword,num_jobs,verbose):
 
 
 df = get_jobs("Software Engineer",5,False)
-
-     
-     

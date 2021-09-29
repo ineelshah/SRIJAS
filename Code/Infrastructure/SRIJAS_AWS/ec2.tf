@@ -72,7 +72,7 @@ $1/bin/pip install selenium
 $1/bin/pip install pymysql
 $1/bin/pip install mysql-connector-python
 cd /tmp
-sudo wget https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_linux64.zip
+sudo wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
 sudo unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/bin/chromedriver
 chromedriver --version

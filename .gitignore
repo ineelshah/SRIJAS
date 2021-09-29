@@ -163,3 +163,6 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+#Ignore configuration and credentials through properties JSON
+properties.json

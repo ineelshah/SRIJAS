@@ -12,10 +12,22 @@ import smtplib
 
 
 ############################################creating connection for database#################################
+import json
+properties = open('properties.json')
+data = json.load(properties)
+
+server_name = data['server_name']
+user_name = data['user_name']
+password = data['password']
+db_name = data['db_name']
+
 try:
-    connection = mysql.connector.connect(host='localhost',database='Srijas',user='root',password='')
+    connection = mysql.connector.connect(host=server_name,
+                                          database=db_name,
+                                          user=user_name,
+                                          password=password)
     if connection.is_connected():
-        print("You're connected to database:")
+        print("You're connected to database.")
 except Error as e:
     print("Error while connecting to MySQL", e)
 
@@ -152,7 +164,8 @@ for key in final_result:
          list_of_curr_links = final_result[key]
          counter = 1
          for link in list_of_curr_links:
-             temp_str += (counter + link + '\n')
+             temp_str += (str(counter) + ".  " + link + '\n')
+             counter += 1
          body += temp_str
          msg.attach(MIMEText(body, 'plain'))
          text = msg.as_string()

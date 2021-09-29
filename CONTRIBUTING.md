@@ -13,9 +13,9 @@ If you want to raise an issue, first, please do check out the existing issues to
 S.No. | Section 
 ----- | ------- 
 1 | [Welcome!](#welcome!)
-2 | [How to Contribute?](#How-to-Contribute?)
+2 | [How to Contribute?](#How-to-Contribute)
 3 | [More things to consider with a PR](#Some-other-things-to-consider-when-merging-a-pull-request)
-4 | [Where to Contribute?](#Where-to-Contribute?)
+4 | [Where to Contribute?](#Where-to-Contribute)
 5 | [Setting up a development environment](#Setting-up-a-development-environment)
 6 | [Credit](#Credit-for-the-CONTRIBUTING.md-file)
 
@@ -27,7 +27,7 @@ The following are guidelines that we feel will nudge developers toward correct c
 
 
 <br></br>
-### How to Contribute?
+### How to Contribute
 
 To contribute, please issue a pull request using the following procedure:
 1. Make sure that any install or build dependencies are removed before the layer end while doing a build.
@@ -51,7 +51,7 @@ To contribute, please issue a pull request using the following procedure:
 * Make sure that any contribution of any sort follows the code of conduct. Our repository has a [code of conduct](https://github.com/ineelshah/SRIJAS/blob/main/CODE_OF_CONDUCT.md) and any pull request that does not respect these will be appropriately removed.
 
 <br></br>
-### Where to Contribute?
+### Where to Contribute
 You can contribute in the following ways to our code:
 
 * Start a discussion

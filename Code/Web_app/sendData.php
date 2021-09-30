@@ -37,6 +37,29 @@ $active = 1;
 $created_by = -1;
 $updated_by = -1;
 
+if(count($_POST)<=1){
+  $sql = "SELECT MAX(user_id) AS user_max FROM user_master";
+  $result = $conn->query($sql);
+  $test_init_usermaster_userid = $result->fetch_assoc()["user_max"];
+  if($test_init_usermaster_userid>0){
+  }
+  else{
+    $test_init_usermaster_userid = 0;
+  }
+
+  $sql = "SELECT MAX(resume_id) AS resume_max FROM resume_master";
+  $result = $conn->query($sql);
+  $test_init_resumemaster_resumeid = $result->fetch_assoc()["resume_max"];
+  if($test_init_resumemaster_resumeid>0){
+  }
+  else{
+    $test_init_resumemaster_resumeid = 0;
+  }
+  echo "<br>test_initial_values: ".$test_init_usermaster_userid."-".$test_init_resumemaster_resumeid."<br>";
+}
+
+
+
 
 $stmt = $conn->prepare("INSERT INTO user_master (user_fname, user_lname, user_email, user_preferred_job_id, is_active, created_by)
   VALUES (?, ?, ?, ?, ?, ?)");
@@ -125,11 +148,69 @@ if($stmt->execute()){
 else{
   echo "Could not add the user-resume";
 }
-$stmt->close();
 
+
+$sql = "SELECT MAX(user_id) AS user_max FROM user_master";
+$result = $conn->query($sql);
+
+$resume_pass = 0;
+$user_pass = 0;
+if(count($_POST)<=1){
+  $sql = "SELECT MAX(user_id) AS user_max FROM user_master";
+  $result = $conn->query($sql);
+  $test_fin_usermaster_userid = $result->fetch_assoc()["user_max"];
+  if($test_fin_usermaster_userid>0){
+  }
+  else{
+    $test_fin_usermaster_userid = 0;
+  }
+
+  $sql = "SELECT MAX(resume_id) AS resume_max FROM resume_master";
+  $result = $conn->query($sql);
+  $test_fin_resumemaster_resumeid = $result->fetch_assoc()["resume_max"];
+  if($test_fin_resumemaster_resumeid>0){
+  }
+  else{
+    $test_fin_resumemaster_resumeid = 0;
+  }
+
+  $sql = "SELECT MAX(resume_id) AS resume_max FROM user_resume";
+  $result = $conn->query($sql);
+  $test_fin_userresume_resumeid = $result->fetch_assoc()["resume_max"];
+  if($test_fin_userresume_resumeid>0){
+  }
+  else{
+    $test_fin_userresume_resumeid = 0;
+  }
+
+  $sql = "SELECT MAX(user_id) AS user_max FROM user_resume";
+  $result = $conn->query($sql);
+  $test_fin_userresume_userid = $result->fetch_assoc()["user_max"];
+  if($test_fin_userresume_userid>0){
+  }
+  else{
+    $test_fin_userresume_userid = 0;
+  }
+
+  echo "<br>test_final_values: ".$test_fin_usermaster_userid."-".$test_fin_resumemaster_resumeid."<br>";
+
+  if($test_fin_resumemaster_resumeid==$test_fin_userresume_resumeid && $test_fin_resumemaster_resumeid==($test_init_resumemaster_resumeid + 1)){
+    $resume_pass=1;
+  }
+  if($test_fin_usermaster_userid==$test_fin_userresume_userid && $test_fin_usermaster_userid==($test_init_usermaster_userid + 1)){
+    $user_pass=1;
+  }
+
+  echo "<br>".$resume_pass."-".$user_pass."<br>";
+  return array("resume"=>$resume_pass,"user"=>$user_pass);
+}
+
+$stmt->close();
 $conn->close();
-// header("Location:index.php");
-// exit;
+
+header("Location:index.php");
+exit;
+
 }
 
 if(count($_POST)>1){

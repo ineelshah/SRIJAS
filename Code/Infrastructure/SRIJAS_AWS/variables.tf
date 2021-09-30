@@ -3,6 +3,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "db_user_name" {}
 variable "db_password" {}
+variable "email_password" {}
 
 # defining default region
 variable "aws_region" {

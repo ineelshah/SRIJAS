@@ -167,3 +167,4 @@ terraform.rc
 #Ignore configuration and credentials through properties JSON
 properties.json
 parameters.json
+mail_param.json

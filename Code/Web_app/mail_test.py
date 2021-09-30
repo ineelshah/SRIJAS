@@ -3,16 +3,18 @@ from email.mime.text import MIMEText
 from socket import gaierror
 import sys
 import smtplib
+import json
+
+f = open ('mail_param.json', "r")
+mail_params = json.loads(f.read())
+smtp_server = mail_params['smtp_server']
+login = mail_params['login']
+password = mail_params['password']
+sender = mail_params['sender']
+receiver = mail_params['receiver']
 
 message = sys.argv[1]
-
 port = 587
-smtp_server = "smtp.gmail.com"
-login = "srijas.alerts@gmail.com"
-password = "SRIJASGMAILPWD"
-sender = "srijas.alerts@gmail.com"
-receiver = "srijas.alerts@gmail.com"
-
 msg = MIMEMultipart()
 msg['From'] = sender
 msg['To'] = receiver

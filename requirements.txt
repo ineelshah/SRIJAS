@@ -58,4 +58,3 @@ virtualenv==20.0.17
 wadllib==1.3.3
 webdriver-manager==3.4.2
 zipp==1.0.0
-zope.interface==4.7.1

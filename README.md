@@ -27,8 +27,6 @@ With SRIJAS, you can upload your resume and job which you want to search for. Th
 The links of the jobs that matches with the skills in your resume, will be sent to you via email.
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
-## Database Schema:
-![DB_Schema](https://github.com/ineelshah/SRIJAS/blob/main/images/DB_Schema.jpg)
 
 ## Plan Of Action:
 
@@ -54,6 +52,18 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 - [ ] Summarize and generate a graph about how the user's resume has progressed.
 - [ ] Allow users to generate insights from how the uploaded resume compares with job descriptions in the market.
 - [ ] Generate insights from all collected data.
+
+🔱: Installation
+---
+1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then ```cd``` into the local repository.
+```
+git clone https://github.com/ineelshah/SRIJAS.git
+cd SRIJAS
+```
+2. This project uses Python 3, so make sure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All requirements of the project are listed in the ```requirements.txt``` file. Use pip to install all of those.
+```
+pip install -r requirements.txt
+```
 
 Contributors
 ---

@@ -34,6 +34,7 @@ resource "aws_instance" "ec2-webserver" {
     user_data = <<EOF
 #!/bin/sh
 sudo apt-get update
+sudo apt install -y python3
 sudo apt-get install -y mysql-client
 echo ${aws_db_instance.default.address} >/tmp/dbdomain.txt
 sudo mv /tmp/dbdomain.txt /dbdomain.txt

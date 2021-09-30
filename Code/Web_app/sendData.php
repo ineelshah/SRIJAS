@@ -1,33 +1,13 @@
 <?php
+
+function executer($inputName, $inputEmail, $inputJobTypeId, $target_file){
+
 include 'vendor/autoload.php';
+var_dump($_FILES);
+echo "<br><br>";
 var_dump($_POST);
-$inputName = $_POST["inputName"];
-$inputEmail = $_POST["inputEmail"];
-$inputJobTypeId = $_POST["inputJobTypeId"];
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES['uploadResume']['name']);
-$uploadOk = 1;
-$fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-if($fileType != "pdf") {
-  echo "Sorry, only PDF Files allowed";
-  $uploadOk = 0;
-}
-
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-
-} else {
-  if (move_uploaded_file($_FILES["uploadResume"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["uploadResume"]["name"])). " has been uploaded.";
-  } else {
-    echo "Sorry, there was an error uploading your file.";
-  }
-}
-
-
-
-
+$conn;
 $paramsFile = file_get_contents("parameters.json");
 $params = json_decode($paramsFile, true);
 
@@ -42,6 +22,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
+
 
 if(preg_match('/\s/i', $inputName)){
   $names = explode(" ", $inputName);
@@ -123,6 +104,7 @@ if ($len > 0) {
   echo "0 results";
 }
 print_r($skill_array);
+echo "<br>max: ".$max."<br>";
 
 $sql = "SELECT MAX(user_id) AS user_max FROM user_master";
 $result = $conn->query($sql);
@@ -146,6 +128,39 @@ else{
 $stmt->close();
 
 $conn->close();
-header("Location:index.php");
-exit;
+// header("Location:index.php");
+// exit;
+}
+
+if(count($_POST)>1){
+  $inputName = $_POST["inputName"];
+  $inputEmail = $_POST["inputEmail"];
+  $inputJobTypeId = $_POST["inputJobTypeId"];
+
+
+  $target_dir = "uploads/";
+  $target_file = $target_dir . basename($_FILES['uploadResume']['name']);
+  $uploadOk = 1;
+  $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+  if($fileType != "pdf") {
+    echo "Sorry, only PDF Files allowed";
+    $uploadOk = 0;
+  }
+
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+
+  } else {
+    if (move_uploaded_file($_FILES["uploadResume"]["tmp_name"], $target_file)) {
+      echo "The file ". htmlspecialchars( basename( $_FILES["uploadResume"]["name"])). " has been uploaded.";
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
+  }
+
+  executer($inputName, $inputEmail, $inputJobTypeId, $target_file);
+}
+
+
 ?>

@@ -301,9 +301,7 @@ $conn->close();
 /**
    * Here, the control is sent back to the index.php file
     */
-header("Location:index.php");
-exit;
-
+echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
 }
 
 /**

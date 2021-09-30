@@ -22,7 +22,9 @@ https://user-images.githubusercontent.com/25223347/135366127-f6b741f2-de85-4d64-
 
 
 # S.R.I.J.A.S.
-Smart-Resume-Interpreter-And-Job-Alert-System
+Smart-Resume-Interpreter-And-Job-Alert-System is an application that makes your job search easy and less frustrating.
+With SRIJAS, you can upload your resume and job which you want to search for. The application will browse Linkedin and Glassdoor websites to search for the jobs.
+The links of the jobs that matches with the skills in your resume, will be sent to you via email.
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
 

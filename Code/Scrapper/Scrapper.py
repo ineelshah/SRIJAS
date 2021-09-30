@@ -10,6 +10,7 @@ import keyword_extraction_modules as ke
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
+from webdriver_manager.chrome import ChromeDriverManager
 import smtplib
 import json
 #######################################################DATABASE OPERATIONS########################################################################################
@@ -73,9 +74,11 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     count=0
     searchquery="Software Engineer"
     options = Options()
-    options.headless = True
     options.add_argument("--window-size=1920,1200")
-    browser = webdriver.Chrome(options=options, executable_path="D:/chromedriver.exe")
+    options.add_arguemnt("--headless")
+    options.add_argument("--nosandbox")
+    options.add_argument("--disable-dev-shm-usage")    
+    browser = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
     match_threshold=1
     
     ################################Sign IN#################################################

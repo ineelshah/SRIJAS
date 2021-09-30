@@ -10,7 +10,6 @@ configparser==5.0.2
 constantly==15.1.0
 crayons==0.4.0
 cryptography==2.8
-dbus-python==1.2.16
 distlib==0.3.0
 distro==1.4.0
 entrypoints==0.3

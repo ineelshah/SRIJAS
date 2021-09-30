@@ -13,7 +13,6 @@ cryptography==2.8
 dbus-python==1.2.16
 distlib==0.3.0
 distro==1.4.0
-distro-info===0.23ubuntu1
 ec2-hibinit-agent==1.0.0
 entrypoints==0.3
 filelock==3.0.12

@@ -38,6 +38,12 @@ $conn;
    * This includes the database connection details, server user, password, database.
    */
 $paramsFile = file_get_contents("parameters.json");
+if($paramsFile){
+  $params=1;
+}
+else{
+  $params=0;
+}
 $params = json_decode($paramsFile, true);
 
 /**
@@ -59,6 +65,10 @@ $db = $params["db_name"];
 $conn = new mysqli($servername, $username, $password, $db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
+  $dbConnection = 0;
+}
+else{
+  $dbConnection = 1;
 }
 echo "Connected successfully";
 
@@ -294,7 +304,7 @@ if(count($_POST)<=1){
   }
 
   echo "<br>".$resume_pass."-".$user_pass."<br>";
-  return array("resume"=>$resume_pass,"user"=>$user_pass);
+  return array("resume"=>$resume_pass,"user"=>$user_pass,"params"=>$params,"dbConnection"=>$dbConnection);
 }
 
 $stmt->close();

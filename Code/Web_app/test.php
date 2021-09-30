@@ -13,6 +13,16 @@ if($results["user"]==1){
 }else{
   $message1 = "User test cases failed.";
 }
+if($results["params"]==1){
+  $message1 = "Dynamic infrastructure Parameter File has been created successfully.";
+}else{
+  $message1 = "Dynamic infrastructure Parameter File creation failed.";
+}
+if($results["dbConnection"]==1){
+  $message1 = "Overall infrastructure and database connection is checked successfully";
+}else{
+  $message1 = "Issue in infrastructure setting and database connection";
+}
 
 $message = $message1.", and ".$message2;
 // $message = wordwrap($message, 70, "\r\n");

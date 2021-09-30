@@ -38,6 +38,37 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 ## Database Schema:
 ![DB_Schema](https://github.com/ineelshah/SRIJAS/blob/main/images/DB_Schema.jpg)
 
+## Overview
+<table border="2" bordercolorlight="#b9dcff" bordercolordark="#006fdd">
+
+  <tr style="background: #010203 ">
+    <td valign="left"> 
+      <p style="color: #FF7A59"> 1.This is the main SRIJAS web page 
+      </p>
+      <a href="./images/home_page.png"> 
+        <img src="./images/home_page.png" >      
+      </a>
+    </td>
+    <td valign="center"> 
+      <p style="color: #FF7A59"> 2.User have to upload their resume file and enter the details
+      </p>
+      <a href="./images/resume_upload.png">
+        <img src="./images/resume_upload.png"> 
+      </a>
+    </td>
+  </tr>
+  <tr style="background: #010203;"> 
+    <td colspan = "2">
+      <p style="color: #FF7A59"> 3.The application matches the job postings with the skills and send email to the user.
+      </p>  
+      <a href="./images/email.PNG">
+        <img src="./images/email.PNG">    
+      </a>
+     </td>
+    </td>
+  </tr>
+  </table>
+
 ## Plan Of Action:
 
 ### Phase 1:

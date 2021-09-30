@@ -75,7 +75,6 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 - [ ] Taking Resume, User Email and other basic User Details from the User using a portal.
 - [ ] Design Database to support all phases of development.
 - [ ] Scraping data from job posting websites like LinkedIn.
-- [ ] Using the Lever API to scan input resume and generate skillsets.
 - [ ] Developing an Email or Notification Service.
 - [ ] Extract knowledge from scraped data.
 - [ ] Match user skillsets with the skillsets extracted from scraped data.

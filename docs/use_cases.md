@@ -39,4 +39,4 @@ When everything has been executed properly, you will be redirected to the same i
 ![Use-Case-Image](https://github.com/ineelshah/SRIJAS/blob/main/images/case3_3.JPG)
 <br></br>
       
-As you can see, the appropriated user and resume tables will be correctly mapped and updated in this case.
+As you can see, the appropriate user and resume tables will be correctly mapped and updated in this case. The new user will be added to the user_master table, their resume will be added to the resume_master table, and all of the child tables will also be updated.

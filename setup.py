@@ -6,7 +6,7 @@ setup(
     description='Project Phase 1 submission.',
     author='Parth Vijaykumar Patel',
     author_email='pvpatel2#ncsu.edu',
-    packages=['src'],
+    packages=[],
         long_description="""\
             Hands on for the standard github repo files.
             .gitignore

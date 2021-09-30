@@ -5,13 +5,14 @@ import sys
 import smtplib
 import json
 
-f = open ('mail_param.json', "r")
+f = open ('parameters.json', "r")
 mail_params = json.loads(f.read())
-smtp_server = mail_params['smtp_server']
-login = mail_params['login']
-password = mail_params['password']
-sender = mail_params['sender']
-receiver = mail_params['receiver']
+
+password = mail_params['email_password']
+smtp_server = "smtp.gmail.com"
+login = "srijas.alerts@gmail.com"
+sender = "srijas.alerts@gmail.com"
+receiver = "srijas.alerts@gmail.com"
 
 message = sys.argv[1]
 port = 587

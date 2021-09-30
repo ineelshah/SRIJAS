@@ -22,7 +22,9 @@ jobs:
         pip install pytest-cov
         echo requirements installed
     - name: Run the tests
-      run: pytest --cov=./
+      run: |
+          cd tests
+          pytest --cov=./
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:

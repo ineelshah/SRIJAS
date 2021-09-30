@@ -38,8 +38,9 @@ git clone https://github.com/ineelshah/SRIJAS.git
 sudo chown -R ubuntu:ubuntu SRIJAS/
 cd SRIJAS/Code
 echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Web_app/parameters.json
-sudo cp -a Web_app/. ../../../../../var/www/html/
+sudo cp -a Web_app/. /var/www/html/
 cd /
+sudo chmod -R 777 /var/www/html
 mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Code/Database/schema/srijas.sql
 EOF
 }
@@ -76,21 +77,18 @@ cd /tmp
 sudo wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip
 sudo unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/bin/chromedriver
-sudo chown root:root /usr/bin/chromedriver
-sudo chmod +x /usr/bin/chromedriver
 chromedriver --version
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb 
 google-chrome-stable --version
-cd ..
 cd /home/ubuntu
 mkdir project
 cd project
 git clone https://github.com/ineelshah/SRIJAS.git
 cd SRIJAS/Code
-echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}"}' > Scrapper/parameters.json
+echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}", "linked_in_pwd":"SRIJASGMAILPWD"}' > Scrapper/parameters.json
 cd /
-crontab -l | { cat; echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/Scrapper.py"; } | crontab -
+echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/Scrapper.py" | crontab -
 crontab -l | { cat; echo "30 1 * * * python3 /home/ubuntu/project/SRIJAS/Code/Scrapper/scrapper_glassdoor.py"; } | crontab -
 EOF
 }

@@ -11,8 +11,9 @@ import keyword_extraction_modules as ke
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
+from webdriver_manager.chrome import ChromeDriverManager
 import smtplib
-
+from selenium.webdriver.chrome.options import Options
 # ===============Database Connector Script ==============================================================
 def db_connect(properties):
     import mysql.connector
@@ -72,9 +73,12 @@ def get_email_id_users(connection):
 final_dict = {}
 threshold = 1
 def get_job_description(keyword,num_jobs,verbose):
-     options = webdriver.ChromeOptions()
-     options.headless = True
-     driver  =  webdriver.Chrome (options=options,executable_path="E:\SRIJAS\Code\chromedriver")
+     options = Options()
+     options.add_argument("--window-size-1920,1200")
+     options.add_argument('--headless')
+     options.add_argument('--no-sandbox')
+     options.add_argument('--disable-dev-shm-usage')
+     driver  =  webdriver.Chrome (options=options,executable_path=ChromeDriverManager().install())
      url = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword="+keyword+"&sc.keyword="+keyword+"&locT=&locId=&jobType="
      driver.get(url)
      job_urls = []
@@ -103,7 +107,7 @@ def get_job_description(keyword,num_jobs,verbose):
 
 
 if __name__ =='__main__':
-    properties = open('properties.json')
+    properties = open('parameters.json')
     connection = db_connect(properties)
     final_skills = get_total_skills(connection)
     print(final_skills)

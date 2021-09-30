@@ -75,9 +75,9 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     searchquery="Software Engineer"
     options = Options()
     options.add_argument("--window-size=1920,1200")
-    options.add_arguemnt("--headless")
-    options.add_argument("--nosandbox")
-    options.add_argument("--disable-dev-shm-usage")    
+    options.add_argument('--headless')
+    options.add_argument('--nosandbox')
+    options.add_argument('--disable-dev-shm-usage')    
     browser = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
     match_threshold=1
     

@@ -28,6 +28,9 @@ The links of the jobs that matches with the skills in your resume, will be sent 
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
 
+## Database Schema:
+![DB_Schema](https://github.com/ineelshah/SRIJAS/blob/main/images/DB_Schema.jpg)
+
 ## Plan Of Action:
 
 ### Phase 1:

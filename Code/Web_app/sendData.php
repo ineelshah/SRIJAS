@@ -1,4 +1,5 @@
 <?php
+ob_start();
 /**
      * The function executer runs the entire backend code after the submission
      * of the form from index.php. Here, it uses the form data and the uploaded
@@ -313,6 +314,7 @@ $conn->close();
 /**
    * Here, the control is sent back to the index.php file
     */
+ob_end_clean();
 echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
 
 }catch(Exception $e){

@@ -28,7 +28,7 @@
 | issues are discussed before they are closed| 3| Most discussions on whatsapp, in person, on issue comments, and over calls.|
 | Chat channel: exists| 3| Whatsapp chat channel exists.|
 | test cases:.a large proportion of the issues related to handling failing cases.|2 |if a test case fails, open an issue and fix it|
-| evidence that the whole team is using the same tools: everyone can get to all tools and files| 3| |
+| evidence that the whole team is using the same tools: everyone can get to all tools and files| 3| https://github.com/ineelshah/SRIJAS/blob/main/requirements.txt |
 | evidence that the whole team is using the same tools (e.g. config files in the repo, updated by lots of different people)| 3| |
 | evidence that the whole team is using the same tools (e.g. tutor can ask anyone to share screen, they demonstrate the system running on their computer)| 3| |
 | evidence that the members of the team are working across multiple places in the code base| 3| |

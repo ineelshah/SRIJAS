@@ -31,6 +31,14 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 ## Database Schema:
 ![DB_Schema](https://github.com/ineelshah/SRIJAS/blob/main/images/DB_Schema.jpg)
 
+
+💡: Use Case
+---
+* ***Professionals***: Working professionals already have a hectic schedule and thus find it difficult to keep a track of multiple job postings across various websites.In such a scenario they can utilize SRIJAS and simply tell us which job roles are they looking for.Our software will then look for jobs across multiple websites and return those that match the user's resume and job role.Thus,making it easier to find new jobs as they keep on working.
+
+* ***Students***: Student find it difficult to look for internships while managing their course work. Even though a particular student might have  considerate skill level he may find it extremely difficult to keep track of new job listings on different websites and will thereby lose promising opportunities unnecessarily. This is exactly where SRIJAS comes in. We will provide students with job listings posted across multiple portals that match with their resume. Our software will then send these listings to students on a frequency as desired by them via email. Now students can rest assured and focus all their energy on their academics and landing a job rather than searching for it.
+
+
 ## Plan Of Action:
 
 ### Phase 1:

@@ -60,6 +60,9 @@ echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.
 sudo cp -a Web_app/. /var/www/html/
 cd /
 sudo chmod -R 777 /var/www/html
+cd /var/www/html
+php test.php
+cd /
 mysql -u ${var.db_user_name} -h ${aws_db_instance.default.address} --password=${var.db_password} < /home/ubuntu/project/SRIJAS/Code/Database/schema/srijas.sql
 EOF
 }

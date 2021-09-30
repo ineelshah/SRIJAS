@@ -9,6 +9,7 @@
 ![Github pull requests](https://img.shields.io/github/issues-pr/ineelshah/SRIJAS)
 ![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/ineelshah/SRIJAS)
 [![DOI](https://zenodo.org/badge/408230160.svg)](https://zenodo.org/badge/latestdoi/408230160)
+[![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/ineelshah/SRIJAS)
 
 
 

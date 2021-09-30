@@ -17,6 +17,8 @@ function executer($inputName, $inputEmail, $inputJobTypeId, $target_file){
      * Include the autoload.php file from the PdfParser application for
      * reading the text from the pdf.
      */
+try{
+
 include 'vendor/autoload.php';
 
 var_dump($_FILES);
@@ -302,6 +304,10 @@ $conn->close();
    * Here, the control is sent back to the index.php file
     */
 echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
+
+}catch(Exception $e){
+  echo "Code did not execute - caught exception in function executer: ".$e->getMessage()."<br>";
+}
 }
 
 /**
@@ -311,6 +317,8 @@ echo "<script type='text/javascript'>window.top.location='index.php';</script>";
    * executer function.
     */
 if(count($_POST)>1){
+  try{
+
   $inputName = $_POST["inputName"];
   $inputEmail = $_POST["inputEmail"];
   $inputJobTypeId = $_POST["inputJobTypeId"];
@@ -336,8 +344,15 @@ if(count($_POST)>1){
       echo "Sorry, there was an error uploading your file.";
     }
   }
+}catch(Exception $e){
+  echo "Code did not execute - caught exception in Form parameters/File upload: ".$e->getMessage()."<br>";
+}
 
+try{
   executer($inputName, $inputEmail, $inputJobTypeId, $target_file);
+}catch(Exception $e){
+  echo "Code did not execute - caught exception in function call->function executer: ".$e->getMessage()."<br>";
+}
 }
 
 

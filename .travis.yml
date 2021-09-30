@@ -1,11 +1,24 @@
-language: python
-python:
-  # PyPy versions
-  - "pypy3"  # currently Python 3.6.1,  PyPy 7.1.1-beta0
-# command to install dependencies
-install:
-  - pip install pytest
-# command to run tests
-script:
-  - cd tests
-  - pytest
+jobs:
+  include:
+    - language: python
+      python:
+        # PyPy versions
+        - "pypy3"  # currently Python 3.6.1,  PyPy 7.1.1-beta0
+      # command to install dependencies
+      install:
+        - pip install pytest
+      # command to run tests
+      script:
+        - cd tests
+        - pytest
+    - language: php
+      php:
+        - 5.4
+        - 5.5
+        - 5.6
+        - hhvm
+      before_script:
+         - composer self-update
+         - composer install --prefer-source --no-interaction --dev
+      script: php -r 'echo "Hello World!\n";'
+        

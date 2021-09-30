@@ -11,8 +11,14 @@
 [![DOI](https://zenodo.org/badge/408230160.svg)](https://zenodo.org/badge/latestdoi/408230160)
 [![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/ineelshah/SRIJAS)
 [![codecov](https://codecov.io/gh/ineelshah/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/ineelshah/SRIJAS)
-
-
+![version](https://img.shields.io/badge/version-1.0-blue)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/style_checker.yml/badge.svg)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/main.yml/badge.svg)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_formatter.yml/badge.svg)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_cov.yml/badge.svg)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)
+![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/Respost.yml/badge.svg)
 
 
 https://user-images.githubusercontent.com/25223347/135366127-f6b741f2-de85-4d64-92c9-cd1d2f518090.mp4

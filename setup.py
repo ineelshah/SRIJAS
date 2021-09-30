@@ -35,8 +35,10 @@ setup(
         keywords='python requirements license gitignore',
         license='MIT',
         install_requires=[
-            'numpy',
+            'selenium',
             'pytest',
-            'configparser',
+            'pymysql',
+            'mysql-connector-python',
+            'webdriver_manager'
         ],
         )

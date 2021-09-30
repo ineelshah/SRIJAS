@@ -3,6 +3,9 @@ from selenium.webdriver.chrome.options import Options
 import time
 import mysql.connector
 from mysql.connector import Error
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import keyword_extraction_modules as ke
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -72,7 +75,7 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     options = Options()
     options.headless = True
     options.add_argument("--window-size=1920,1200")
-    browser = webdriver.Chrome(options=options, executable_path="../../../../../../usr/bin/chromedriver")
+    browser = webdriver.Chrome(options=options, executable_path="D:/chromedriver.exe")
     match_threshold=1
     
     ################################Sign IN#################################################
@@ -87,7 +90,9 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     
     ######################################################## traverse to job lisitng page #########################
     browser.get('https://www.linkedin.com/jobs/jobs-in-raleigh-nc?trk=homepage-basic_intent-module-jobs&position=1&pageNum=0')
-    time.sleep(4)
+    weblement = WebDriverWait(browser, 10000).until(
+        EC.presence_of_element_located((By.XPATH, "//input[contains(@id,'jobs-search-box-keyword-id')]"))
+    )
     job_description=browser.find_element_by_xpath("//input[contains(@id,'jobs-search-box-keyword-id')]").send_keys(searchquery)
     #inserting job filter value
     search_button=browser.find_element_by_class_name("jobs-search-box__submit-button")

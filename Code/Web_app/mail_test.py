@@ -1,8 +1,11 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from socket import gaierror
-
+import sys
 import smtplib
+
+message = sys.argv[1]
+
 port = 587
 smtp_server = "smtp.gmail.com"
 login = "srijas.alerts@gmail.com"
@@ -13,8 +16,8 @@ receiver = "hsharshil@gmail.com"
 msg = MIMEMultipart()
 msg['From'] = sender
 msg['To'] = receiver
-msg['Subject'] = 'Test email function'
-body = f'testing email functionality'
+msg['Subject'] = 'PHP Code Test Results'
+body = message
 msg.attach(MIMEText(body, 'plain'))
 text = msg.as_string()
 

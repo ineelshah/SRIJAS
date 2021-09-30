@@ -1,4 +1,6 @@
+# defining the outputs needed after completion of execution
 
+# outputs for ec2 webserver
 output "ec2-webserver-dns" {
     value = aws_instance.ec2-webserver.public_dns
 }
@@ -15,6 +17,7 @@ output "ec2-webserver-private-ip" {
     value = aws_instance.ec2-webserver.private_ip
 }
 
+# outputs for ec2 scrapping server
 output "ec2-scrapper-dns" {
     value = aws_instance.ec2-scrapper.public_dns
 }
@@ -31,6 +34,7 @@ output "ec2-scrapper-private-ip" {
     value = aws_instance.ec2-scrapper.private_ip
 }
 
+# outputs for rds db instance
 output "db-address" {
     value = aws_db_instance.default.address
 }

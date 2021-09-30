@@ -1,3 +1,4 @@
+# declaring aws as required provider
 terraform {
   required_providers {
     aws = {
@@ -7,13 +8,14 @@ terraform {
   }
 }
 
-# Configure the AWS Provider
+# Configure the AWS Provider with access key and secret key present in terraform.tfvars file
 provider "aws" {
   region = "us-east-1"
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
 }
 
+# creating vpc using module
 module "vpc" {
     source = "../modules/vpc-double"
     vpc_name = "db-sample"

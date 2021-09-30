@@ -11,7 +11,7 @@ smtp_server = "smtp.gmail.com"
 login = "srijas.alerts@gmail.com"
 password = "SRIJASGMAILPWD"
 sender = "srijas.alerts@gmail.com"
-receiver = "hsharshil@gmail.com"
+receiver = "srijas.alerts@gmail.com"
 
 msg = MIMEMultipart()
 msg['From'] = sender

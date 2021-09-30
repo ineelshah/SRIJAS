@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: rytswd/respost@v0.1.0
         with:
-          title: Respost Custom Title from step 1, for Issue
-          body: "Hello, World! Respost is here, making your GitHub Actions workflow even easier!"
+          title: Custom comment added using Respost
+          body: "Hello! Respost is here. This issue will be addressed by our contributors soon. Keep commenting and contributing."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

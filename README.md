@@ -72,6 +72,7 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 ## Plan Of Action:
 
 ### Phase 1:
+- [ ] Designing the infrastructure for hosting the web application, database and other required services.
 - [ ] Taking Resume, User Email and other basic User Details from the User using a portal.
 - [ ] Design Database to support all phases of development.
 - [ ] Scraping data from job posting websites like LinkedIn.

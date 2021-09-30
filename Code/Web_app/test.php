@@ -29,7 +29,7 @@ $message = $message1.", and ".$message2;
 //   echo "Mail could not be sent.";
 // }
 
-$message_param = 'python3 mail_test.py "'.$message."'";
+$message_param = 'python3 mail_test.py "'.$message.'"';
 $command = escapeshellcmd($message_param);
 $output = shell_exec($command);
 echo $output;

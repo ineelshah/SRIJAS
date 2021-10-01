@@ -1,0 +1,13 @@
+name: Respost - Write comment to new Issue event
+on: issues
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rytswd/respost@v0.1.0
+        with:
+          title: Custom comment added using Respost
+          body: "Hello! Respost is here. This issue will be addressed by our contributors soon. Keep commenting and contributing."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

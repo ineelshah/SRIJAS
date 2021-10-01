@@ -1,0 +1,31 @@
+name: Running Code Coverage
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install Python 3.9.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9.7
+    - name: Install dependencies
+      run: |
+        pip install pytest-cov
+        echo requirements installed
+    - name: Run the tests
+      run: |
+          cd tests
+          pytest --cov=./
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}

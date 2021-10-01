@@ -2,10 +2,23 @@
 <head>
 
 <?php
-
+/**
+   * This segment of code is responsible for loading entries from the job_master
+   * table and putting them into the drop-down in the form
+   * @var object paramsFile and
+   * @var params associative array(string) extracts content from parameters.json
+   * @var skill_ids array(int) stores the IDs of the job_master table entries
+   * @var skill_array array(string) stores the titles of the job_master table entries.
+    */
 $paramsFile = file_get_contents("parameters.json");
 $params = json_decode($paramsFile, true);
 
+/**
+   * @var servername string and
+   * @var username string and
+   * @var password string and
+   * @var db string variables store the connection parameters for $conn
+   */
 $servername = $params["server_name"];
 $username = $params["user_name"];
 $password = $params["password"];
@@ -29,7 +42,8 @@ if ($len > 0) {
 $conn->close();
 ?>
 
-<!-- Bootstrap CSS -->
+
+<!-- We use Bootstrap CSS for styling purposes-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style media="screen">
   input[type="email"]::placeholder {
@@ -42,7 +56,7 @@ $conn->close();
 <title> S.R.I.J.A.S. </title>
 </head>
 <body>
-
+<!-- Here, we create a simple form with the options to add name, email, job type and upload a .pdf file-->
   <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)no-repeat; background-size: cover;" class="jumbotron bg-cover text-white">
       <div class="container py-5 text-center">
           <h1 class="display-4 font-weight-bold">S.R.I.J.A.S. (Smart Resume Interpreter And Job Alerts System)</h1>
@@ -87,7 +101,7 @@ $conn->close();
 
   </form>
 </div>
-
+<!-- Here, we add a link to a useful resource for job searches-->
 <div class="container hero">
     <div class="row">
         <div class="col-md-8 offset-md-2">

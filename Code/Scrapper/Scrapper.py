@@ -171,7 +171,7 @@ if __name__ =='__main__':
 port = 587
 smtp_server = "smtp.gmail.com"
 login = "srijas.alerts@gmail.com"
-password = "SRIJASGMAILPWD"
+password = ""
 sender = "srijas.alerts@gmail.com"
 for key in final_result:
      if key in email_id_list:

@@ -2,6 +2,8 @@
 # Project 1 Rubric
 
 
+Column B Total: 241.
+
 
 | Notes|Self Assessment  zero (none), one (a litte), two (somewhat), three (a lot)| Evidence|
 |-----|--------|---------|

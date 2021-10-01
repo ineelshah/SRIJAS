@@ -17,7 +17,6 @@ jobs:
       install:
         - sudo apt update
         - sudo apt install mysql-server
-        - sudo mysql_secure_installation
       script:
         - sudo mysql -u root < /home/travis/build/ineelshah/SRIJAS/Code/Database/srijas.sql
         - echo '{"server_name":"localhost","user_name":"root","password":"","db_name":"srijas"}'>/home/travis/build/ineelshah/SRIJAS/Code/Web_app/parameters.json

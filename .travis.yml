@@ -14,7 +14,13 @@ jobs:
     - language: php
       php:
         - 7.4
+      install:
+        - sudo apt update
+        - sudo apt install mysql-server
+        - sudo mysql_secure_installation
       script:
+        - sudo mysql -u root < /Code/Database/srijas.sql
+        - echo '{"server_name" : "localhost", "user_name":"root", "password": "", "db_name": "srijas"}' > Code/Web_app/parameters.json
         - cd Code/Web_app
         - php test.php
         

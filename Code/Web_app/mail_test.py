@@ -19,7 +19,7 @@ port = 587
 msg = MIMEMultipart()
 msg['From'] = sender
 msg['To'] = receiver
-msg['Subject'] = 'PHP Code Test Results'
+msg['Subject'] = 'Post deployment test Results'
 body = message
 msg.attach(MIMEText(body, 'plain'))
 text = msg.as_string()

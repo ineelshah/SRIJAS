@@ -1,4 +1,5 @@
 <?php
+ob_start();
 /**
      * The function executer runs the entire backend code after the submission
      * of the form from index.php. Here, it uses the form data and the uploaded
@@ -39,10 +40,10 @@ $conn;
    */
 $paramsFile = file_get_contents("parameters.json");
 if($paramsFile){
-  $params=1;
+  $paramsCheck=1;
 }
 else{
-  $params=0;
+  $paramsCheck=0;
 }
 $params = json_decode($paramsFile, true);
 
@@ -304,7 +305,7 @@ if(count($_POST)<=1){
   }
 
   echo "<br>".$resume_pass."-".$user_pass."<br>";
-  return array("resume"=>$resume_pass,"user"=>$user_pass,"params"=>$params,"dbConnection"=>$dbConnection);
+  return array("resume"=>$resume_pass,"user"=>$user_pass,"params"=>$paramsCheck,"dbConnection"=>$dbConnection);
 }
 
 $stmt->close();
@@ -313,6 +314,7 @@ $conn->close();
 /**
    * Here, the control is sent back to the index.php file
     */
+ob_end_clean();
 echo "<script type='text/javascript'>window.top.location='index.php';</script>"; exit;
 
 }catch(Exception $e){

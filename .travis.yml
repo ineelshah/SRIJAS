@@ -1,11 +1,20 @@
-language: python
-python:
-  # PyPy versions
-  - "pypy3"  # currently Python 3.6.1,  PyPy 7.1.1-beta0
-# command to install dependencies
-install:
-  - pip install pytest
-# command to run tests
-script:
-  - cd tests
-  - pytest
+jobs:
+  include:
+    - language: python
+      python:
+        # PyPy versions
+        - "pypy3"  # currently Python 3.6.1,  PyPy 7.1.1-beta0
+      # command to install dependencies
+      install:
+        - pip install pytest
+      # command to run tests
+      script:
+        - cd tests
+        - pytest
+    - language: php
+      php:
+        - 7.4
+      script:
+        - cd /home/travis/build/ineelshah/SRIJAS/Code/Web_app
+        - php test.php
+        

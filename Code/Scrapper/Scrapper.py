@@ -75,7 +75,7 @@ def get_job_description(keyword,no_of_jobs_to_retrieve,data):
     searchquery="Software Engineer"
     options = Options()
     options.add_argument("--window-size=1920,1200")
-    options.add_argument('--headless')
+    options.headless= True
     options.add_argument('--nosandbox')
     options.add_argument('--disable-dev-shm-usage')    
     browser = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
@@ -171,7 +171,7 @@ if __name__ =='__main__':
 port = 587
 smtp_server = "smtp.gmail.com"
 login = "srijas.alerts@gmail.com"
-password = "SRIJASGMAILPWD"
+password = ""
 sender = "srijas.alerts@gmail.com"
 for key in final_result:
      if key in email_id_list:

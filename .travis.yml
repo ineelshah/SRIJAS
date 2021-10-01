@@ -14,5 +14,7 @@ jobs:
     - language: php
       php:
         - 7.4
-      script: php -r 'echo "Hello World!\n";'
+      script:
+        - cd Code/Web_app
+        - php test.php
         

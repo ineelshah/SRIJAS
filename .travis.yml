@@ -18,8 +18,8 @@ jobs:
         - sudo apt update
         - sudo apt install mysql-server
       script:
-        - sudo mysql -u root < /home/travis/build/ineelshah/SRIJAS/Code/Database/srijas.sql
-        - echo '{"server_name":"localhost","user_name":"root","password":"","db_name":"srijas"}'>/home/travis/build/ineelshah/SRIJAS/Code/Web_app/parameters.json
+        - sudo mysql -u root < /home/travis/build/ineelshah/SRIJAS/Code/Database/schema/srijas.sql
+        - echo '{"server_name":"127.0.0.1","user_name":"root","password":"","db_name":"srijas"}'>/home/travis/build/ineelshah/SRIJAS/Code/Web_app/parameters.json
         - cd /home/travis/build/ineelshah/SRIJAS/Code/Web_app
         - php test.php
         

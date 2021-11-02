@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 28, 2021 at 06:13 PM
+-- Host: localhost
+-- Generation Time: Nov 02, 2021 at 06:45 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,120 +18,186 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: srijas
+-- Database: `srijas`
 --
-CREATE DATABASE IF NOT EXISTS srijas DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE srijas;
+CREATE DATABASE IF NOT EXISTS `srijas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `srijas`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table job_master
+-- Table structure for table `job_master`
 --
 
-CREATE TABLE job_master (
-  job_id int(11) NOT NULL,
-  job_title varchar(100) NOT NULL,
-  is_active bit(1) NOT NULL,
-  created_by int(11) NOT NULL,
-  created_at datetime NOT NULL DEFAULT current_timestamp(),
-  updated_by int(11) NOT NULL,
-  updated_at datetime NOT NULL DEFAULT current_timestamp()
+CREATE TABLE `job_master` (
+  `job_id` int(11) NOT NULL,
+  `job_title` varchar(100) NOT NULL,
+  `is_active` bit(1) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table job_master
+-- Dumping data for table `job_master`
 --
 
+INSERT INTO `job_master` (`job_id`, `job_title`, `is_active`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(1, 'Software Engineer', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(2, 'Software Developer', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(3, 'Software Engineer Intern', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(4, 'Software Developer Intern', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(5, 'Software Engineer', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(6, 'Software Developer', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(7, 'Software Engineer Intern', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(8, 'Software Developer Intern', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table resume_master
+-- Table structure for table `login_master`
 --
 
-CREATE TABLE resume_master (
-  resume_id int(11) NOT NULL,
-  resume_json longtext NOT NULL,
-  resume_universities varchar(1000) DEFAULT NULL,
-  resume_degrees varchar(1000) NOT NULL,
-  resume_links varchar(1000) NOT NULL,
-  resume_summary varchar(1000) NOT NULL,
-  is_active bit(1) NOT NULL,
-  created_by int(11) NOT NULL,
-  created_at datetime NOT NULL DEFAULT current_timestamp(),
-  updated_by int(11) NOT NULL,
-  updated_at datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table resume_skills
---
-
-CREATE TABLE resume_skills (
-  resume_skill_id int(11) NOT NULL,
-  resume_id int(11) NOT NULL,
-  skill_id int(11) NOT NULL,
-  is_active bit(1) NOT NULL,
-  created_by int(11) NOT NULL,
-  created_at datetime NOT NULL DEFAULT current_timestamp(),
-  updated_by int(11) NOT NULL,
-  updated_at datetime NOT NULL DEFAULT current_timestamp()
+CREATE TABLE `login_master` (
+  `login_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `email_id` varchar(30) NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table skill_master
+-- Table structure for table `resume_master`
 --
 
-CREATE TABLE skill_master (
-  skill_id int(11) NOT NULL,
-  skill_title varchar(100) NOT NULL,
-  is_active bit(1) NOT NULL,
-  created_by int(11) NOT NULL,
-  created_at datetime NOT NULL DEFAULT current_timestamp(),
-  updated_by int(11) NOT NULL,
-  updated_at datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table user_master
---
-
-CREATE TABLE user_master (
-  user_id int(11) NOT NULL,
-  user_fname varchar(50) NOT NULL,
-  user_lname varchar(50) DEFAULT NULL,
-  user_email varchar(50) NOT NULL,
-  user_preferred_job_id int(11) NOT NULL,
-  is_active bit(1) NOT NULL,
-  created_by int(11) NOT NULL,
-  created_at datetime NOT NULL DEFAULT current_timestamp(),
-  updated_by int(11) DEFAULT NULL,
-  updated_at datetime DEFAULT current_timestamp()
+CREATE TABLE `resume_master` (
+  `resume_id` int(11) NOT NULL,
+  `resume_json` longtext NOT NULL,
+  `resume_universities` varchar(1000) DEFAULT NULL,
+  `resume_degrees` varchar(1000) NOT NULL,
+  `resume_links` varchar(1000) NOT NULL,
+  `resume_summary` varchar(1000) NOT NULL,
+  `is_active` bit(1) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table user_resume
+-- Table structure for table `resume_skills`
 --
 
-CREATE TABLE user_resume (
-  user_resume_id int(11) NOT NULL,
-  user_id int(11) NOT NULL,
-  resume_id int(11) NOT NULL,
-  is_active bit(1) NOT NULL,
-  created_by int(11) NOT NULL,
-  created_at datetime NOT NULL DEFAULT current_timestamp(),
-  updated_by int(11) NOT NULL,
-  updated_at datetime NOT NULL DEFAULT current_timestamp()
+CREATE TABLE `resume_skills` (
+  `resume_skill_id` int(11) NOT NULL,
+  `resume_id` int(11) NOT NULL,
+  `skill_id` int(11) NOT NULL,
+  `is_active` bit(1) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skill_master`
+--
+
+CREATE TABLE `skill_master` (
+  `skill_id` int(11) NOT NULL,
+  `skill_title` varchar(100) NOT NULL,
+  `is_active` bit(1) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `skill_master`
+--
+
+INSERT INTO `skill_master` (`skill_id`, `skill_title`, `is_active`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(1, 'C', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(2, 'Java', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(3, 'Python', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(4, 'C++', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(5, 'C#', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(6, 'Visual Basic', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(7, 'JavaScript', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(8, 'Assembly Language', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(9, 'PHP', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(10, 'SQL', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(11, 'Classic Visual Basic', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(12, 'Delphi/Object Pascal', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(13, 'Ruby', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(14, 'Go', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(15, 'Swift', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(16, 'R', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(17, 'Groovy', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(18, 'Perl', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(19, 'MATLAB', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(20, 'Fortran', b'1', -1, '2021-11-01 04:44:31', 0, '2021-11-01 04:44:31'),
+(21, 'C', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(22, 'Java', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(23, 'Python', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(24, 'C++', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(25, 'C#', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(26, 'Visual Basic', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(27, 'JavaScript', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(28, 'Assembly Language', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(29, 'PHP', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(30, 'SQL', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(31, 'Classic Visual Basic', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(32, 'Delphi/Object Pascal', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(33, 'Ruby', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(34, 'Go', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(35, 'Swift', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(36, 'R', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(37, 'Groovy', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(38, 'Perl', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40'),
+(39, 'MATLAB', b'1', -1, '2021-11-02 17:28:40', 0, '2021-11-02 17:28:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_master`
+--
+
+CREATE TABLE `user_master` (
+  `user_id` int(11) NOT NULL,
+  `user_fname` varchar(50) NOT NULL,
+  `user_lname` varchar(50) DEFAULT NULL,
+  `user_email` varchar(50) NOT NULL,
+  `user_preferred_job_id` int(11) NOT NULL,
+  `is_active` bit(1) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) DEFAULT NULL,
+  `updated_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_resume`
+--
+
+CREATE TABLE `user_resume` (
+  `user_resume_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `resume_id` int(11) NOT NULL,
+  `is_active` bit(1) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -139,137 +205,129 @@ CREATE TABLE user_resume (
 --
 
 --
--- Indexes for table job_master
+-- Indexes for table `job_master`
 --
-ALTER TABLE job_master
-  ADD PRIMARY KEY (job_id);
+ALTER TABLE `job_master`
+  ADD PRIMARY KEY (`job_id`);
 
 --
--- Indexes for table resume_master
+-- Indexes for table `login_master`
 --
-ALTER TABLE resume_master
-  ADD PRIMARY KEY (resume_id);
+ALTER TABLE `login_master`
+  ADD PRIMARY KEY (`login_id`),
+  ADD UNIQUE KEY `email_id` (`email_id`),
+  ADD KEY `login_master_user_fk` (`user_id`);
 
 --
--- Indexes for table resume_skills
+-- Indexes for table `resume_master`
 --
-ALTER TABLE resume_skills
-  ADD PRIMARY KEY (resume_skill_id),
-  ADD KEY resume_skills_resume_fk (resume_id),
-  ADD KEY resume_skills_skills_fk (skill_id);
+ALTER TABLE `resume_master`
+  ADD PRIMARY KEY (`resume_id`);
 
 --
--- Indexes for table skill_master
+-- Indexes for table `resume_skills`
 --
-ALTER TABLE skill_master
-  ADD PRIMARY KEY (skill_id);
+ALTER TABLE `resume_skills`
+  ADD PRIMARY KEY (`resume_skill_id`),
+  ADD KEY `resume_skills_resume_fk` (`resume_id`),
+  ADD KEY `resume_skills_skills_fk` (`skill_id`);
 
 --
--- Indexes for table user_master
+-- Indexes for table `skill_master`
 --
-ALTER TABLE user_master
-  ADD PRIMARY KEY (user_id),
-  ADD KEY user_job_fk (user_preferred_job_id);
+ALTER TABLE `skill_master`
+  ADD PRIMARY KEY (`skill_id`);
 
 --
--- Indexes for table user_resume
+-- Indexes for table `user_master`
 --
-ALTER TABLE user_resume
-  ADD PRIMARY KEY (user_resume_id),
-  ADD KEY user_resume_user_fk (user_id),
-  ADD KEY user_resume_resume_fk (resume_id);
+ALTER TABLE `user_master`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `user_job_fk` (`user_preferred_job_id`);
+
+--
+-- Indexes for table `user_resume`
+--
+ALTER TABLE `user_resume`
+  ADD PRIMARY KEY (`user_resume_id`),
+  ADD KEY `user_resume_user_fk` (`user_id`),
+  ADD KEY `user_resume_resume_fk` (`resume_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table job_master
+-- AUTO_INCREMENT for table `job_master`
 --
-ALTER TABLE job_master
-  MODIFY job_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `job_master`
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table resume_master
+-- AUTO_INCREMENT for table `login_master`
 --
-ALTER TABLE resume_master
-  MODIFY resume_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `login_master`
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table resume_skills
+-- AUTO_INCREMENT for table `resume_master`
 --
-ALTER TABLE resume_skills
-  MODIFY resume_skill_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `resume_master`
+  MODIFY `resume_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table skill_master
+-- AUTO_INCREMENT for table `resume_skills`
 --
-ALTER TABLE skill_master
-  MODIFY skill_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `resume_skills`
+  MODIFY `resume_skill_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table user_master
+-- AUTO_INCREMENT for table `skill_master`
 --
-ALTER TABLE user_master
-  MODIFY user_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `skill_master`
+  MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table user_resume
+-- AUTO_INCREMENT for table `user_master`
 --
-ALTER TABLE user_resume
-  MODIFY user_resume_id int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user_master`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_resume`
+--
+ALTER TABLE `user_resume`
+  MODIFY `user_resume_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table resume_skills
+-- Constraints for table `login_master`
 --
-ALTER TABLE resume_skills
-  ADD CONSTRAINT resume_skills_resume_fk FOREIGN KEY (resume_id) REFERENCES resume_master (resume_id),
-  ADD CONSTRAINT resume_skills_skills_fk FOREIGN KEY (skill_id) REFERENCES skill_master (skill_id);
+ALTER TABLE `login_master`
+  ADD CONSTRAINT `login_master_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user_master` (`user_id`);
 
 --
--- Constraints for table user_master
+-- Constraints for table `resume_skills`
 --
-ALTER TABLE user_master
-  ADD CONSTRAINT user_job_fk FOREIGN KEY (user_preferred_job_id) REFERENCES job_master (job_id);
+ALTER TABLE `resume_skills`
+  ADD CONSTRAINT `resume_skills_resume_fk` FOREIGN KEY (`resume_id`) REFERENCES `resume_master` (`resume_id`),
+  ADD CONSTRAINT `resume_skills_skills_fk` FOREIGN KEY (`skill_id`) REFERENCES `skill_master` (`skill_id`);
 
 --
--- Constraints for table user_resume
+-- Constraints for table `user_master`
 --
-ALTER TABLE user_resume
-  ADD CONSTRAINT user_resume_resume_fk FOREIGN KEY (resume_id) REFERENCES resume_master (resume_id),
-  ADD CONSTRAINT user_resume_user_fk FOREIGN KEY (user_id) REFERENCES user_master (user_id);
-COMMIT;
+ALTER TABLE `user_master`
+  ADD CONSTRAINT `user_job_fk` FOREIGN KEY (`user_preferred_job_id`) REFERENCES `job_master` (`job_id`);
 
-INSERT INTO job_master (job_title, is_active, created_by) VALUES
-('Software Engineer', 1, -1),
-('Software Developer', 1, -1),
-('Software Engineer Intern', 1, -1),
-('Software Developer Intern', 1, -1);
-
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("C", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Java", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Python", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("C++", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("C#", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Visual Basic", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("JavaScript", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Assembly Language", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("PHP", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("SQL", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Classic Visual Basic", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Delphi/Object Pascal", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Ruby", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Go", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Swift", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("R", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Groovy", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Perl", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("MATLAB", 1, -1);
-INSERT INTO skill_master(skill_title, is_active, created_by) VALUES ("Fortran", 1, -1);
+--
+-- Constraints for table `user_resume`
+--
+ALTER TABLE `user_resume`
+  ADD CONSTRAINT `user_resume_resume_fk` FOREIGN KEY (`resume_id`) REFERENCES `resume_master` (`resume_id`),
+  ADD CONSTRAINT `user_resume_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user_master` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

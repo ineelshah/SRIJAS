@@ -53,7 +53,7 @@ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 cd /home/ubuntu
 mkdir project
 cd project
-git clone https://github.com/ineelshah/SRIJAS.git
+git clone https://github.com/hvudeshi/SRIJAS.git
 sudo chown -R ubuntu:ubuntu SRIJAS/
 cd SRIJAS/Code
 echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}", "email_password": "${var.email_password}"}' > Web_app/parameters.json
@@ -117,7 +117,7 @@ google-chrome-stable --version
 cd /home/ubuntu
 mkdir project
 cd project
-git clone https://github.com/ineelshah/SRIJAS.git
+git clone https://github.com/hvudeshi/SRIJAS.git
 cd SRIJAS/Code
 echo '{"server_name" : "${aws_db_instance.default.address}", "user_name":"${var.db_user_name}", "password": "${var.db_password}", "db_name": "${aws_db_instance.default.name}", "linked_in_pwd":"SRIJASGMAILPWD"}' > Scrapper/parameters.json
 virtualenv -q -p /usr/bin/python3.8 $1

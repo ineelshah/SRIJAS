@@ -122,4 +122,4 @@ pip install -r requirements.txt
     <td align="center"><a href="https://github.com/kalgeekotak99"><img src="https://avatars.githubusercontent.com/u/43135408?v=4" width="75px;" alt=""/><br /><sub><b>Kalgee Kotak</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/Vineet2311"><img src="https://avatars.githubusercontent.com/u/89501442?v=4" width="75px;" alt=""/><br /><sub><b>Vineet Chheda</b></sub></a><br /></td>
   </tr>
-</table>Contributors (Phase-2)
+</table>

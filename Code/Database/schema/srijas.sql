@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 02, 2021 at 06:45 PM
+-- Generation Time: Nov 02, 2021 at 07:29 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -61,9 +61,7 @@ INSERT INTO `job_master` (`job_id`, `job_title`, `is_active`, `created_by`, `cre
 
 CREATE TABLE `login_master` (
   `login_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `email_id` varchar(30) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -175,6 +173,7 @@ CREATE TABLE `user_master` (
   `user_fname` varchar(50) NOT NULL,
   `user_lname` varchar(50) DEFAULT NULL,
   `user_email` varchar(50) NOT NULL,
+  `user_password` varchar(20) NOT NULL,
   `user_preferred_job_id` int(11) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `created_by` int(11) NOT NULL,
@@ -182,6 +181,13 @@ CREATE TABLE `user_master` (
   `updated_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_master`
+--
+
+INSERT INTO `user_master` (`user_id`, `user_fname`, `user_lname`, `user_email`, `user_password`, `user_preferred_job_id`, `is_active`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
+(1, 'Hardik', 'Udeshi', 'hvudeshi@gmail.com', '', 1, b'1', -1, '2021-11-02 14:08:50', NULL, '2021-11-02 14:08:50');
 
 -- --------------------------------------------------------
 
@@ -215,7 +221,6 @@ ALTER TABLE `job_master`
 --
 ALTER TABLE `login_master`
   ADD PRIMARY KEY (`login_id`),
-  ADD UNIQUE KEY `email_id` (`email_id`),
   ADD KEY `login_master_user_fk` (`user_id`);
 
 --
@@ -243,6 +248,7 @@ ALTER TABLE `skill_master`
 --
 ALTER TABLE `user_master`
   ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_email` (`user_email`),
   ADD KEY `user_job_fk` (`user_preferred_job_id`);
 
 --
@@ -267,7 +273,7 @@ ALTER TABLE `job_master`
 -- AUTO_INCREMENT for table `login_master`
 --
 ALTER TABLE `login_master`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `resume_master`
@@ -291,7 +297,7 @@ ALTER TABLE `skill_master`
 -- AUTO_INCREMENT for table `user_master`
 --
 ALTER TABLE `user_master`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_resume`

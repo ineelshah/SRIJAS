@@ -76,6 +76,13 @@ $conn->close();
       <input type="email" name="inputEmail" class="form-control" id="inputEmail" placeholder="Enter email" required>
     </div>
 
+
+    <div class="form-group  col-4">
+      <label for="inputPassword">Password</label>
+      <input type="password" name="inputPassword" class="form-control" id="inputPassword" placeholder="Enter Password" required>
+    </div>
+
+
     <div class="col-auto my-1 col-4">
       <label for="inputJobTypeId">Type Of Job You Are Looking For: </label>
       <select class="custom-select mr-sm-2" id="inputJobTypeId" name="inputJobTypeId" required>
@@ -98,6 +105,8 @@ $conn->close();
     <div class="col-auto my-1">
       <button type="submit" value="Submit" id="submit" name="submit" class="btn btn-primary col-auto">Submit</button>
     </div>
+
+    <a href="login.php">Already a user?<a/>
 
   </form>
 </div>

@@ -2,10 +2,10 @@ from setuptools import setup
 
 setup(
     name='SRIJAS',
-    version='1.0',
-    description='Project Phase 1 submission.',
-    author='Parth Vijaykumar Patel',
-    author_email='pvpatel2#ncsu.edu',
+    version='v4.0.0',
+    description='Project Phase 2 submission.',
+    author='Hardik Udeshi',
+    author_email='hvudeshi@ncsu.edu',
     packages=[],
         long_description="""\
             Hands on for the standard github repo files.

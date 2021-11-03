@@ -1,17 +1,15 @@
 ![SRIJAS_LOGO](https://user-images.githubusercontent.com/40118578/135184051-73acf9be-07c1-4c98-9730-68fa161f6a1b.png)
 
-
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Github](https://img.shields.io/badge/language-python-red.svg)
-![GitHub issues](https://img.shields.io/github/issues-raw/ineelshah/SRIJAS)
-![Github closes issues](https://img.shields.io/github/issues-closed-raw/ineelshah/SRIJAS)
-![Github pull requests](https://img.shields.io/github/issues-pr/ineelshah/SRIJAS)
-![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/ineelshah/SRIJAS)
+![GitHub issues](https://img.shields.io/github/issues-raw/hvudeshi/SRIJAS)
+![Github closes issues](https://img.shields.io/github/issues-closed-raw/hvudeshi/SRIJAS)
+![Github pull requests](https://img.shields.io/github/issues-pr/hvudeshi/SRIJAS)
+![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/hvudeshi/SRIJAS)
 [![DOI](https://zenodo.org/badge/408230160.svg)](https://zenodo.org/badge/latestdoi/408230160)
 [![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/ineelshah/SRIJAS)
 [![codecov](https://codecov.io/gh/ineelshah/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/ineelshah/SRIJAS)
-![version](https://img.shields.io/badge/version-1.0-blue)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/hvudeshi/SRIJAS)
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/style_checker.yml/badge.svg)
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/main.yml/badge.svg)
@@ -19,13 +17,11 @@
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_cov.yml/badge.svg)
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)
 ![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/Respost.yml/badge.svg)
-
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/hvudeshi/SRIJAS)
+![Lines of code](https://img.shields.io/tokei/lines/github/hvudeshi/SRIJAS)
+![GitHub contributors](https://img.shields.io/github/contributors/hvudeshi/SRIJAS)
 
 https://user-images.githubusercontent.com/25223347/135366127-f6b741f2-de85-4d64-92c9-cd1d2f518090.mp4
-
-
-
-
 
 # S.R.I.J.A.S.
 ## Job Search was never this easy
@@ -97,6 +93,13 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 - [ ] Allow users to generate insights from how the uploaded resume compares with job descriptions in the market.
 - [ ] Generate insights from all collected data.
 
+## Report Bug or Request a feature
+<p align="center">
+    <a href="https://github.com/het-patel99/cheapBuy/issues/new/choose">Report Bug</a>
+    ·
+    <a href="https://github.com/het-patel99/cheapBuy/issues/new/choose">Request Feature</a>
+</p>
+
 🔱: Installation
 ---
 1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then ```cd``` into the local repository.
@@ -109,15 +112,14 @@ cd SRIJAS
 pip install -r requirements.txt
 ```
 
-Contributors
----
+## Contributors (Phase-2)
+
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/ineelshah"><img src="https://avatars.githubusercontent.com/u/40118578?v=4" width="75px;" alt=""/><br /><sub><b>Neel Shah</b></sub></a></td>
-    <td align="center"><a href="https://github.com/PvPatel-1001"><img src="https://avatars.githubusercontent.com/u/69849039?v=4" width="75px;" alt=""/><br /><sub><b>Parth Patel</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/ameyatathavadkar"><img src="https://avatars.githubusercontent.com/u/25223347?v=4" width="75px;" alt=""/><br /><sub><b>Ameya Tathavadkar</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/jayrshah98"><img src="https://avatars.githubusercontent.com/u/41386638?s=400&u=b323434b42507c474829a804556d69da82d48c3f&v=4" width="75px;" alt=""/><br /><sub><b>Jay Shah</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Harshil-Shah99"><img src="https://avatars.githubusercontent.com/u/38115399?v=4" width="75px;" alt=""/><br /><sub><b>Harshil Shah</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/het-patel99"><img src="https://avatars.githubusercontent.com/u/44945317?s=400&u=c05d1c4c8cf27c526d9d8c72b0725255500591cd&v=4" width="75px;" alt=""/><br /><sub><b>Het Patel</b></sub></a></td>
+    <td align="center"><a href="https://github.com/hvudeshi"><img src="https://avatars.githubusercontent.com/u/22682878?v=4" width="75px;" alt=""/><br /><sub><b>Hardik Udeshi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/sal0ni"><img src="https://avatars.githubusercontent.com/u/37000199?v=4" width="75px;" alt=""/><br /><sub><b>Saloni Mahatma</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/kalgeekotak99"><img src="https://avatars.githubusercontent.com/u/43135408?v=4" width="75px;" alt=""/><br /><sub><b>Kalgee Kotak</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Vineet2311"><img src="https://avatars.githubusercontent.com/u/89501442?v=4" width="75px;" alt=""/><br /><sub><b>Vineet Chheda</b></sub></a><br /></td>
   </tr>
-</table>
-
+</table>Contributors (Phase-2)

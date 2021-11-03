@@ -61,21 +61,22 @@
       if ($_POST['inputEmail'] != "" && $_POST['inputPassword'] != ""){
           echo "in if";
           $sql_query = "select count(*) as cntUser from user_master where user_email='".$_POST['inputEmail']."' and user_password='".$_POST['inputPassword']."'";
-          $result = $conn->query($sql);
-          echo "result";
-          echo $result;
+          // echo $sql_query;
+          $result = $conn->query($sql_query);
+          // var_dump($result);
           $row = $result->fetch_assoc();
-
+          // var_dump($row);
           $count = $row['cntUser'];
+          // var_dump($count);
 
-          // echo "run query";
+          echo "run query";
 
           if($count > 0){
               echo "count>0";
               $_SESSION['uname'] = $_POST['inputEmail'];
               header('Location: home.php');
           }else{
-              // echo "Invalid username and password";
+              echo "Invalid username and password";
           }
 
       }

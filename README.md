@@ -7,16 +7,16 @@
 ![Github pull requests](https://img.shields.io/github/issues-pr/hvudeshi/SRIJAS)
 ![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/hvudeshi/SRIJAS)
 [![DOI](https://zenodo.org/badge/408230160.svg)](https://zenodo.org/badge/latestdoi/408230160)
-[![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/ineelshah/SRIJAS)
+[![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/het-patel99/SRIJAS)
 [![codecov](https://codecov.io/gh/ineelshah/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/ineelshah/SRIJAS)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/hvudeshi/SRIJAS)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/style_checker.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/main.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_formatter.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/code_cov.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)
-![github workflow](https://github.com/ineelshah/SRIJAS/actions/workflows/Respost.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/unit_test.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/style_checker.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/main.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/code_formatter.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/code_cov.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/close_as_a_feature.yml/badge.svg)
+![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/Respost.yml/badge.svg)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/hvudeshi/SRIJAS)
 ![Lines of code](https://img.shields.io/tokei/lines/github/hvudeshi/SRIJAS)
 ![GitHub contributors](https://img.shields.io/github/contributors/hvudeshi/SRIJAS)
@@ -31,11 +31,6 @@ The links of the jobs that matches with the skills in your resume, will be sent 
 
 This is our submission for the Project for Software Engineering CSC 510 Fall 2021.
 
-## Infrastructure Description:
-![Infrastructure](https://github.com/ineelshah/SRIJAS/blob/main/images/Infrastructure.jpg)
-
-## Database Schema:
-![DB_Schema](https://github.com/ineelshah/SRIJAS/blob/main/images/DB_Schema.jpg)
 
 ## Overview
 <table border="2" bordercolorlight="#b9dcff" bordercolordark="#006fdd">
@@ -99,9 +94,9 @@ This is our submission for the Project for Software Engineering CSC 510 Fall 202
 
 ## Report Bug or Request a feature
 <p align="center">
-    <a href="https://github.com/het-patel99/cheapBuy/issues/new/choose">Report Bug</a>
+    <a href="https://github.com/hvudeshi/SRIJAS/issues/new/choose">Report Bug</a>
     ·
-    <a href="https://github.com/het-patel99/cheapBuy/issues/new/choose">Request Feature</a>
+    <a href="https://github.com/hvudeshi/SRIJAS/issues/new/choose">Request Feature</a>
 </p>
 
 🔱: Installation

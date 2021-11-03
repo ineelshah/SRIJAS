@@ -82,6 +82,15 @@ $conn->close();
       <input type="password" name="inputPassword" class="form-control" id="inputPassword" placeholder="Enter Password" required>
     </div>
 
+    <div class="form-group  col-4">
+      <label for="inputLocation">Location</label>
+      <input type="text" name="inputLocation" class="form-control" id="inputLocation" placeholder="Enter Location">
+    </div>
+
+    <div class="form-group  col-4">
+      <label for="inputThreshold">Threshold for Skill Matching</label>
+      <input type="text" name="inputThreshold" class="form-control" id="inputThreshold" placeholder="Enter Threshold in percentage">
+    </div>
 
     <div class="col-auto my-1 col-4">
       <label for="inputJobTypeId">Type Of Job You Are Looking For: </label>

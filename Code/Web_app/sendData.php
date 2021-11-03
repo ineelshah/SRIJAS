@@ -13,7 +13,7 @@ ob_start();
      * that indicate respectively whether the resume table code test cases
      * and the user table code test cases have passed. 1-> pass, 0-> fail
      */
-function executer($inputName, $inputEmail, $inputPassword, $inputJobTypeId, $target_file){
+function executer($inputName, $inputEmail, $inputPassword, $inputLocation, $inputThreshold, $inputJobTypeId, $target_file){
   /**
      * Include the autoload.php file from the PdfParser application for
      * reading the text from the pdf.
@@ -132,10 +132,10 @@ if(count($_POST)<=1){
    * This segment of the code uses a prepared statement to insert the form data
    * into the user_master table
    */
-$stmt = $conn->prepare("INSERT INTO user_master (user_fname, user_lname, user_email, user_password, user_preferred_job_id, is_active, created_by)
-  VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO user_master (user_fname, user_lname, user_email, user_password, user_location, user_threshold, user_preferred_job_id, is_active, created_by)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("ssssiii", $firstName, $lastName, $inputEmail, $inputPassword, $inputJobTypeId, $active, $created_by);
+$stmt->bind_param("sssssiiii", $firstName, $lastName, $inputEmail, $inputPassword, $inputJobTypeId, $active, $created_by);
 $stmt->execute();
 $stmt->close();
 
@@ -335,6 +335,8 @@ if(count($_POST)>1){
   $inputEmail = $_POST["inputEmail"];
   $inputJobTypeId = $_POST["inputJobTypeId"];
   $inputPassword = $_POST["inputPassword"];
+  $inputLocation = $_POST["inputLocation"];
+  $inputThreshold = $_POST["inputThreshold"];
 
 
   $target_dir = "uploads/";
@@ -362,7 +364,7 @@ if(count($_POST)>1){
 }
 
 try{
-  executer($inputName, $inputEmail, $inputPassword, $inputJobTypeId, $target_file);
+  executer($inputName, $inputEmail, $inputPassword, $inputLocation, $inputThreshold, $inputJobTypeId, $target_file);
 }catch(Exception $e){
   echo "Code did not execute - caught exception in function call->function executer: ".$e->getMessage()."<br>";
 }

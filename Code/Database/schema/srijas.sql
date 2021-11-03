@@ -66,17 +66,6 @@ INSERT INTO `job_master` (`job_id`, `job_title`, `is_active`, `created_by`, `cre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login_master`
---
-
-CREATE TABLE `login_master` (
-  `login_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `resume_master`
 --
 
@@ -199,6 +188,8 @@ CREATE TABLE `user_master` (
   `user_lname` varchar(50) DEFAULT NULL,
   `user_email` varchar(50) NOT NULL,
   `user_password` varchar(20) NOT NULL,
+  `user_location` varchar(20) DEFAULT NULL,
+  `user_threshold` int(11) DEFAULT 100,
   `user_preferred_job_id` int(11) NOT NULL,
   `is_active` bit(1) NOT NULL,
   `created_by` int(11) NOT NULL,
@@ -237,13 +228,6 @@ CREATE TABLE `user_resume` (
 --
 ALTER TABLE `job_master`
   ADD PRIMARY KEY (`job_id`);
-
---
--- Indexes for table `login_master`
---
-ALTER TABLE `login_master`
-  ADD PRIMARY KEY (`login_id`),
-  ADD KEY `login_master_user_fk` (`user_id`);
 
 --
 -- Indexes for table `resume_master`
@@ -292,12 +276,6 @@ ALTER TABLE `job_master`
   MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `login_master`
---
-ALTER TABLE `login_master`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `resume_master`
 --
 ALTER TABLE `resume_master`
@@ -330,12 +308,6 @@ ALTER TABLE `user_resume`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `login_master`
---
-ALTER TABLE `login_master`
-  ADD CONSTRAINT `login_master_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user_master` (`user_id`);
 
 --
 -- Constraints for table `resume_skills`

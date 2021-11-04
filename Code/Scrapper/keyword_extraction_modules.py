@@ -1,4 +1,4 @@
-def get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold):
+def get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, total_skills, threshold):
     result_dict = dict()
     job_desc_link_and_skills_dict = get_dict_with_list_of_skills_from_description(links_description_dict, total_skills)
     for curr_resume in resume_skills_dict:

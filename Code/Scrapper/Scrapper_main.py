@@ -106,9 +106,9 @@ if __name__ =='__main__':
     role = get_role(connection)
     no_of_jobs_to_retrieve = 5
     match_threshold = get_threshold(connection)
-    # final_result_linkedIn = sl.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
-    final_result_glassdoor = sg.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
-    # final_result_indeed = si.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    # final_result_linkedIn = sl.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    final_result_glassdoor = sg.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    # final_result_indeed = si.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     
     # final_results = final_result_linkedIn + final_result_glassdoor + final_result_indeed
     print(final_result_glassdoor)

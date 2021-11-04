@@ -5,11 +5,20 @@ import scrapper_glassdoor as sg
 import scrapper_indeed as si
 import scrapper_linkedIn as sl
 import email_alert as ea
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 #######################################################DATABASE OPERATIONS########################################################################################
 
 
 ############################################creating connection for database#################################
+
+def get_driver():
+    options = webdriver.ChromeOptions()
+    options.headless = True
+    driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
+    return driver
+
 def db_connect(properties):
     properties = open('parameters.json')
     data = json.load(properties)
@@ -63,6 +72,7 @@ def get_emailing_list(connection):
 
 
 if __name__ =='__main__':
+    driver = get_driver()
     properties = open('parameters.json')
     data = json.load(properties)
     connection = db_connect(properties)
@@ -73,14 +83,15 @@ if __name__ =='__main__':
     email_id_list = get_emailing_list(connection)
     # print(email_list)
     location = "california"
-    role = "Software Engineer"
+    role = "DevOps Engineer"
     no_of_jobs_to_retrieve = 5
     match_threshold = 1
-    final_result_linkedIn = sl.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    final_result_linkedIn = sl.get_job_description(driver, connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     # final_result_glassdoor = sg.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     # final_result_indeed = si.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     
     # final_results = final_result_linkedIn + final_result_glassdoor + final_result_indeed
+    print(final_result_linkedIn)
     ea.sendmail(final_result_linkedIn,email_id_list)
 
 

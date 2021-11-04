@@ -7,7 +7,7 @@ def sendmail(final_result,email_id_list):
     port = 587
     smtp_server = "smtp.gmail.com"
     login = "srijas.alerts@gmail.com"
-    password = ""
+    password = "SRIJASGMAILPWD"
     sender = "srijas.alerts@gmail.com"
     for key in final_result:
         if key in email_id_list:
@@ -22,6 +22,7 @@ def sendmail(final_result,email_id_list):
             list_of_curr_links = final_result[key]
             counter = 1
             for link in list_of_curr_links:
+                print(link)
                 pre = """<a href='"""
                 embedded_link = link
                 post = """'>View Position</a>"""

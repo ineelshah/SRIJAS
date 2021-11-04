@@ -35,14 +35,15 @@ def get_job_description(connection,resume_skills,all_skills, match_threshold, ro
             #Get the data for job title and job link and store it in dictionary
             dictionary["Job Title"] = string1[i].get_text().replace('\n',' ').replace(' ','')
             #Replace the next line parameter with the blank space
+            #Iterate the different job suggestions according to the given filters and fetch description for the jobs matching the search criteria of the user given.
             dictionary["Job Link"] = string1[i]['href']
             limit-=1
             k = requests.get(string1[i]['href']).text
             soup=BeautifulSoup(k,'html.parser')
             str2 = soup.findAll("div", {"class" : "show-more-less-html__markup show-more-less-html__markup--clamp-after-5"})
-            # print(str2)
+
             str3 = str2[0].get_text()
-            # print(str3)
+   
             description_dict[dictionary["Job Link"]]=str3
 
     final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,description_dict,connection,all_skills,match_threshold)

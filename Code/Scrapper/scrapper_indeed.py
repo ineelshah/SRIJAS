@@ -17,7 +17,7 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import requests
 
-def get_job_description(keyword, num_jobs, verbose):
+def get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data):
     options = Options()
     options.add_argument("--window-size-1920,1200")
     options.add_argument('--headless')
@@ -27,8 +27,8 @@ def get_job_description(keyword, num_jobs, verbose):
     url = "https://www.indeed.com/jobs?"
     #-------------------Job perferences(input from user)-------------------------------------#
     data={}
-    data["q"] = "Software Developer"
-    data["l"] = "New York"
+    data["q"] = role
+    data["l"] = location
     data["jt"]="parttime"
     data["explvl"]="senior_level"
     #------------------------------------------------------------------------------------------#
@@ -47,9 +47,9 @@ def get_job_description(keyword, num_jobs, verbose):
         if text.get_attribute('href'):  ### get all the job postings URL'sz
             job_urls.append(text.get_attribute('href'))
             c = c + 1
-            if (c >= num_jobs):
+            if (c >= no_of_jobs_to_retrieve):
                 break
-
+    final_dict = {}
     # ========== Iterate through each url and get the job description =================================
     for i in job_urls:
         time.sleep(5)
@@ -58,5 +58,7 @@ def get_job_description(keyword, num_jobs, verbose):
         job_description = driver.find_element_by_xpath('//*[@id="jobDescriptionText"]').text
         jobs.append(job_description)
         final_dict[i] = job_description
-        
-    return final_dict         
+    
+    final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final_dict,connection,all_skills,match_threshold)
+
+    return final_result

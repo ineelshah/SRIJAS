@@ -29,13 +29,20 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
     string1 = soup1.find_all("a",{"class":"base-card__full-link"})
     print(string1)
     description_dict = {}
+    job_role = []
     for i in range(len(string1)):
         if role.lower() in string1[i].get_text().lower() and limit>0:
             dictionary = {}
 #Get the data for job title and job link and store it in dictionary
             dictionary["Job Title"] = string1[i].get_text().replace('\n',' ').replace(' ','')
+<<<<<<< HEAD
+            job_role.append(dictionary["Job Title"])
+            #Replace the next line parameter with the blank space
+            #Iterate the different job suggestions according to the given filters and fetch description for the jobs matching the search criteria of the user given.
+=======
 #Replace the next line parameter with the blank space
 #Iterate the different job suggestions according to the given filters and fetch description for the jobs matching the search criteria of the user given.
+>>>>>>> c19e82e1e7c1708a1e9550a41e7de30ee7cd4e19
             dictionary["Job Link"] = string1[i]['href']
             limit-=1
             k = requests.get(string1[i]['href']).text
@@ -48,4 +55,4 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
 
     final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,description_dict,all_skills,match_threshold)
 
-    return final_result
+    return job_role,final_result

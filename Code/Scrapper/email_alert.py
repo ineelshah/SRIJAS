@@ -2,12 +2,15 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 from socket import gaierror
+import json
 
 def sendmail(final_result,email_id_list):
     port = 587
     smtp_server = "smtp.gmail.com"
     login = "srijas.alerts@gmail.com"
-    password = "SRIJASGMAILPWD"
+    properties = open('parameters.json')
+    data = json.load(properties)
+    password = str(data['linked_in_pwd'])
     sender = "srijas.alerts@gmail.com"
     flag = 0
     for key in final_result:

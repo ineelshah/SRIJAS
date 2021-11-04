@@ -13,7 +13,7 @@ db_connection = ""
 
 
 def test_main_function():
-  assert get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold) == {'res1': ['link1']}
+  assert get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, total_skills, threshold) == {'res1': ['link1']}
 
 
 def test_match_both_lists_empty():
@@ -90,4 +90,4 @@ def test_get_dict_with_list_of_skills_from_description_both_empty_lists():
     assert kem.get_dict_with_list_of_skills_from_description(links_description_dict, total_skills) == {"link1" : [], "link2" : []}
 
 def test_get_user_id_to_list_of_job_ids():
-    assert kem.get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold) == {'res1': ['link1']}
+    assert kem.get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, total_skills, threshold) == {'res1': ['link1']}

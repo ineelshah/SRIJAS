@@ -48,7 +48,7 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
         final_dict[i] = job_description
         job_title=driver.find_element_by_xpath("//div[@class='css-17x2pwl e11nt52q6']").text
         company_details=driver.find_element_by_xpath("//div[@class='css-16nw49e e11nt52q1']").text
-        job_role.append(job_title,company_details)
+        job_role.append(job_title)
 
     final_result = ke.get_user_id_to_list_of_job_ids(resume_skills,final_dict,all_skills,match_threshold)   
 

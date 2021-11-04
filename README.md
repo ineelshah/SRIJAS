@@ -7,7 +7,7 @@
 ![Github pull requests](https://img.shields.io/github/issues-pr/hvudeshi/SRIJAS)
 ![Github closed pull requests](https://img.shields.io/github/issues-pr-closed/hvudeshi/SRIJAS)
 [![DOI](https://zenodo.org/badge/408230160.svg)](https://zenodo.org/badge/latestdoi/408230160)
-[![Build Status](https://app.travis-ci.com/ineelshah/SRIJAS.svg?branch=main)](https://app.travis-ci.com/het-patel99/SRIJAS)
+[![Build Status](https://app.travis-ci.com/het-patel99/SRIJAS.svg?branch=main)](https://app.travis-ci.com/het-patel99/SRIJAS)
 [![codecov](https://codecov.io/gh/ineelshah/SRIJAS/branch/main/graph/badge.svg?token=Z9MGKKAXN6)](https://codecov.io/gh/ineelshah/SRIJAS)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/hvudeshi/SRIJAS)
 ![github workflow](https://github.com/hvudeshi/SRIJAS/actions/workflows/unit_test.yml/badge.svg)

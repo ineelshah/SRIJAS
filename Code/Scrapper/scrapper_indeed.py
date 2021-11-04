@@ -17,6 +17,7 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import requests
 
+#create function get_job_description
 def get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data):
     options = Options()
     options.add_argument("--window-size-1920,1200")
@@ -26,11 +27,13 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
     driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
     url = "https://www.indeed.com/jobs?"
     #-------------------Job perferences(input from user)-------------------------------------#
+#Add the advanced filters required in the dictionary to update later in the link    
     data={}
     data["q"] = role
     data["l"] = location
     data["jt"]="parttime"
     data["explvl"]="senior_level"
+#parse the url in order to add the advanced filters
     #------------------------------------------------------------------------------------------#
     url_parts = list(urllib.parse.urlparse(url))
     query = dict(urllib.parse.parse_qsl(url_parts[4]))
@@ -49,6 +52,7 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
             c = c + 1
             if (c >= no_of_jobs_to_retrieve):
                 break
+# create final dicitonary to return the results                
     final_dict = {}
     # ========== Iterate through each url and get the job description =================================
     for i in job_urls:
@@ -58,7 +62,8 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
         job_description = driver.find_element_by_xpath('//*[@id="jobDescriptionText"]').text
         jobs.append(job_description)
         final_dict[i] = job_description
-    
+#get the url and job description for the jobs which meets user input    
     final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final_dict,all_skills,match_threshold)
 
+#return final dictionary    
     return final_result

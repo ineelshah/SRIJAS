@@ -4,7 +4,7 @@ import smtplib
 from socket import gaierror
 import json
 
-def sendmail(final_result,email_id_list):
+def sendmail(final_result,email_id_list, job_role):
     port = 587
     smtp_server = "smtp.gmail.com"
     login = "srijas.alerts@gmail.com"
@@ -29,8 +29,8 @@ def sendmail(final_result,email_id_list):
                 print(link)
                 pre = """<a href='"""
                 embedded_link = link
-                post = """'>View Position</a>"""
-                temp_str += (str(counter) + ".  " + pre + embedded_link + post+ '\n')
+                post = """'>Click here</a>"""
+                temp_str += (str(counter) + ".  " + job_role[counter-1] + ': ' + pre + embedded_link + post+ '\n')
                 counter += 1
             body += temp_str
             msg.attach(MIMEText(body, 'html'))

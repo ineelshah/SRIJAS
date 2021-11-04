@@ -18,17 +18,20 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
     # role = role.replace(' ', '%20')
     #Form a dynamic URL to fetch the details using Beautiful soup for the given filters
     url = "https://www.linkedin.com/jobs/jobs-in-"+location+"?keywords="+role+"&f_JT=F%2CP&f_E=1%2C3&position=1&pageNum=0"
-    
+    url = url.replace(' ', '%20')
+    print(url)
+
     # Add number of jobs to retrieve to limit
     limit = no_of_jobs_to_retrieve
     
     k1 = requests.get(url)
     # Run the beautiful soup 
     soup1 = BeautifulSoup(k1.content, 'html.parser')
-    
+    print(soup1)
     string1 = soup1.find_all("a",{"class":"base-card__full-link"})
     print(string1)
     description_dict = {}
+    job_role = []
     for i in range(len(string1)):
         if role.lower() in string1[i].get_text().lower() and limit>0:
             dictionary = {}
@@ -37,6 +40,7 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
             #Replace the next line parameter with the blank space
             #Iterate the different job suggestions according to the given filters and fetch description for the jobs matching the search criteria of the user given.
             dictionary["Job Link"] = string1[i]['href']
+            job_role.append(dictionary["Job Title"])
             limit-=1
             k = requests.get(string1[i]['href']).text
             soup=BeautifulSoup(k,'html.parser')
@@ -48,4 +52,4 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
 
     final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,description_dict,all_skills,match_threshold)
 
-    return final_result
+    return job_role, final_result

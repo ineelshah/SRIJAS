@@ -48,21 +48,21 @@ def get_location(connection):
     cursor=connection.cursor()
     cursor.execute(sql_select_query)
     records2=cursor.fetchall()
-    return records2[0]
+    return records2[-1][0]
 
 def get_threshold(connection):
     sql_select_query = "select user_threshold from user_master um join user_resume ur where um.user_id=ur.user_id"
     cursor=connection.cursor()
     cursor.execute(sql_select_query)
     records2=cursor.fetchall()
-    return records2[0]
+    return records2[-1][0]
 
 def get_role(connection):
     sql_select_query = "select job_title from job_master jm join user_master um where jm.job_id=um.user_preferred_job_id"
     cursor=connection.cursor()
     cursor.execute(sql_select_query)
     records2=cursor.fetchall()
-    return records2[0]
+    return records2[-1][0]
 
 def get_resume_skills(connection):
     sql_select_Query2="select resume_id,skill_id from resume_skills where is_active=1"
@@ -102,16 +102,18 @@ if __name__ =='__main__':
     #print(resume_skills)
     email_id_list = get_emailing_list(connection)
     # print(email_list)
-    location = get_location(connection)
-    role = get_role(connection)
+    location = str(get_location(connection))
+    role = str(get_role(connection))
+    print(role)
     no_of_jobs_to_retrieve = 5
-    match_threshold = get_threshold(connection)
-    # final_result_linkedIn = sl.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
-    final_result_glassdoor = sg.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
-    # final_result_indeed = si.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
-    
-    # final_results = final_result_linkedIn + final_result_glassdoor + final_result_indeed
+    match_threshold = int(get_threshold(connection))
+    # role_name_linkedIn, final_result_linkedIn = sl.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    job_role, final_result_glassdoor = sg.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    # role_name_indeed, final_result_indeed = si.get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     print(final_result_glassdoor)
-    ea.sendmail(final_result_glassdoor,email_id_list)
+    # final_results = final_result_linkedIn + final_result_glassdoor + final_result_indeed
+    # role_name = role_name_linkedIn + role_name_glassdoor + role_name_indeed
+
+    # ea.sendmail(final_result_linkedIn,email_id_list,role_name_linkedIn)
 
 

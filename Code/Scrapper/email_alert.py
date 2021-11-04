@@ -4,7 +4,9 @@ import smtplib
 from socket import gaierror
 import json
 
+#Email job links to the users 
 def sendmail(final_result,email_id_list, job_role):
+    #SMTP setup parameters
     port = 587
     smtp_server = "smtp.gmail.com"
     login = "srijas.alerts@gmail.com"
@@ -13,6 +15,7 @@ def sendmail(final_result,email_id_list, job_role):
     password = str(data['linked_in_pwd'])
     sender = "srijas.alerts@gmail.com"
     flag = 0
+    #Iterate through final_result dictionary (key = resume_id)
     for key in final_result:
         if key in email_id_list:
             receiver = email_id_list[key]
@@ -44,7 +47,8 @@ def sendmail(final_result,email_id_list, job_role):
                 server.ehlo()
                 server.login(login, password)
                 server.sendmail(sender, receiver, text)
-                server.quit()                                                                                # tell the script to report if your message was sent or which errors need to be fixed
+                server.quit()                                                                                
+                # tell the script to report if your message was sent or which errors need to be fixed
                 # print('Sent')
             except (gaierror, ConnectionRefusedError):
                 # print('Failed to connect to the server. Bad connection settings?')

@@ -135,7 +135,7 @@ if(count($_POST)<=1){
 $stmt = $conn->prepare("INSERT INTO user_master (user_fname, user_lname, user_email, user_password, user_location, user_threshold, user_preferred_job_id, is_active, created_by)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-$stmt->bind_param("sssssiiii", $firstName, $lastName, $inputEmail, $inputPassword, $inputJobTypeId, $active, $created_by);
+$stmt->bind_param("sssssiiii", $firstName, $lastName, $inputEmail, $inputPassword, $inputLocation, $inputThreshold, $inputJobTypeId, $active, $created_by);
 $stmt->execute();
 $stmt->close();
 

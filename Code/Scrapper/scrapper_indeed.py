@@ -17,7 +17,7 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import requests
 
-def get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data):
+def get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data):
     options = Options()
     options.add_argument("--window-size-1920,1200")
     options.add_argument('--headless')
@@ -59,6 +59,6 @@ def get_job_description(connection,resume_skills,all_skills, match_threshold, ro
         jobs.append(job_description)
         final_dict[i] = job_description
     
-    final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final_dict,connection,all_skills,match_threshold)
+    final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final_dict,all_skills,match_threshold)
 
     return final_result

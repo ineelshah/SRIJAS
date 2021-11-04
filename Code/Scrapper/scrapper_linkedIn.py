@@ -14,7 +14,7 @@ import requests
 
 # Form a function get_job_description fetching details of location, resume skills, match_threshold,Job roles
 
-def get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data):
+def get_job_description(resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data):
     # role = role.replace(' ', '%20')
     #Form a dynamic URL to fetch the details using Beautiful soup for the given filters
     url = "https://www.linkedin.com/jobs/jobs-in-"+location+"?keywords="+role+"&f_JT=F%2CP&f_E=1%2C3&position=1&pageNum=0"
@@ -46,6 +46,6 @@ def get_job_description(connection,resume_skills,all_skills, match_threshold, ro
    
             description_dict[dictionary["Job Link"]]=str3
 
-    final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,description_dict,connection,all_skills,match_threshold)
+    final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,description_dict,all_skills,match_threshold)
 
     return final_result

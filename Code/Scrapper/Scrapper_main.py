@@ -72,7 +72,7 @@ def get_emailing_list(connection):
 
 
 if __name__ =='__main__':
-    driver = get_driver()
+    # driver = get_driver()
     properties = open('parameters.json')
     data = json.load(properties)
     connection = db_connect(properties)
@@ -83,10 +83,10 @@ if __name__ =='__main__':
     email_id_list = get_emailing_list(connection)
     # print(email_list)
     location = "california"
-    role = "DevOps Engineer"
+    role = "Software Engineer"
     no_of_jobs_to_retrieve = 5
     match_threshold = 1
-    final_result_linkedIn = sl.get_job_description(driver, connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    final_result_linkedIn = sl.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     # final_result_glassdoor = sg.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     # final_result_indeed = si.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     

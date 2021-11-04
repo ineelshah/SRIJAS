@@ -9,6 +9,7 @@ def sendmail(final_result,email_id_list):
     login = "srijas.alerts@gmail.com"
     password = "SRIJASGMAILPWD"
     sender = "srijas.alerts@gmail.com"
+    flag = 0
     for key in final_result:
         if key in email_id_list:
             receiver = email_id_list[key]
@@ -52,7 +53,9 @@ def sendmail(final_result,email_id_list):
             except smtplib.SMTPException as e:
                 # print('SMTP error occurred: ' + str(e))
                 flag=4
-    if flag==1:
+    if flag == 0:
+        return "Skill or Job Role not matched"
+    elif flag==1:
         return "Sent"
     elif flag==2:
         return "Failed to connect to the server. Bad connection settings"

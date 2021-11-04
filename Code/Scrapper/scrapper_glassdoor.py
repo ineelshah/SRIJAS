@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def get_job_description(keyrolword,num_jobs,verbose):
+def get_job_description(keyword,num_jobs,verbose):
     options = Options()
     options.add_argument("--window-size-1920,1200")
     options.add_argument('--headless')

@@ -86,12 +86,12 @@ if __name__ =='__main__':
     role = "Software Engineer"
     no_of_jobs_to_retrieve = 5
     match_threshold = 1
-    final_result_linkedIn = sl.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
-    # final_result_glassdoor = sg.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    # final_result_linkedIn = sl.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
+    final_result_glassdoor = sg.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     # final_result_indeed = si.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     
     # final_results = final_result_linkedIn + final_result_glassdoor + final_result_indeed
-    print(final_result_linkedIn)
-    ea.sendmail(final_result_linkedIn,email_id_list)
+    print(final_result_glassdoor)
+    ea.sendmail(final_result_glassdoor,email_id_list)
 
 

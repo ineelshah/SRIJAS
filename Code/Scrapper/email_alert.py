@@ -4,6 +4,7 @@ import smtplib
 from socket import gaierror
 import json
 
+#Create function sendmail 
 def sendmail(final_result,email_id_list, job_role):
     port = 587
     smtp_server = "smtp.gmail.com"
@@ -44,7 +45,7 @@ def sendmail(final_result,email_id_list, job_role):
                 server.ehlo()
                 server.login(login, password)
                 server.sendmail(sender, receiver, text)
-                server.quit()                                                                                # tell the script to report if your message was sent or which errors need to be fixed
+                server.quit()                               # tell the script to report if your message was sent or which errors need to be fixed
                 # print('Sent')
             except (gaierror, ConnectionRefusedError):
                 # print('Failed to connect to the server. Bad connection settings?')
@@ -56,6 +57,7 @@ def sendmail(final_result,email_id_list, job_role):
             except smtplib.SMTPException as e:
                 # print('SMTP error occurred: ' + str(e))
                 flag=4
+   # Depending upon the value of flag it shows whether skills are matched or not , email is sent or not amd doess it fail to connect to the server with wrong password or bad connection
     if flag == 0:
         return "Skill or Job Role not matched"
     elif flag==1:

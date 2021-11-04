@@ -1,4 +1,6 @@
+
 def get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, total_skills, threshold):
+    #Finds job links that matches skills in resume and skills in description
     result_dict = dict()
     job_desc_link_and_skills_dict = get_dict_with_list_of_skills_from_description(links_description_dict, total_skills)
     for curr_resume in resume_skills_dict:
@@ -15,6 +17,7 @@ def get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, t
     return result_dict
 
 def get_dict_with_list_of_skills_from_description(links_description_dict, total_skills):
+    #returns list of skills in each description (present in dictionary)
     job_desc_link_and_skills_dict = dict()
     for link in links_description_dict:
         description = links_description_dict[link]
@@ -23,17 +26,21 @@ def get_dict_with_list_of_skills_from_description(links_description_dict, total_
     return job_desc_link_and_skills_dict
 
 def get_list_of_matched_skills(description, total_skills):
+    #find list of skills from job description
     list_of_skills_matched = []
     description = description.upper()
     desc_list = description.split(" ")
+    #Append skills to list_of_skills_matched if skills in total_skills is also present in description
     for skill in total_skills:
         if (total_skills[skill].upper() in desc_list) or ((total_skills[skill].upper() + ".") in desc_list) or (total_skills[skill].upper().center(1) in desc_list):
             list_of_skills_matched.append(skill)
     #print(list_of_skills_matched)
     return list_of_skills_matched
 
+#Compare skills in resume and and skills in job description
 def match_both_lists(list_of_skills_in_resume, list_of_skills_in_description, threshold, total_skill_count):
     count = 0
+    #Increment count if skills in job description is present in resume
     for skill in list_of_skills_in_description:
         if skill in list_of_skills_in_resume:
             count += 1
@@ -46,4 +53,4 @@ if __name__ == '__main__':
     total_skills = {1: "Java", 2: "C"}
     threshold = 50
     db_connection = ""
-    print(get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold))
+    #print(get_user_id_to_list_of_job_ids(resume_skills_dict, links_description_dict, db_connection, total_skills, threshold))

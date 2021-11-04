@@ -43,9 +43,29 @@ def get_all_skills(connection):
     print("All skills",all_skills)
     return all_skills
 
+def get_location(connection):
+    sql_select_query = "select user_location from user_master um join user_resume ur where um.user_id=ur.user_id"
+    cursor=connection.cursor()
+    cursor.execute(sql_select_query)
+    records2=cursor.fetchall()
+    return records2[0]
+
+def get_threshold(connection):
+    sql_select_query = "select user_threshold from user_master um join user_resume ur where um.user_id=ur.user_id"
+    cursor=connection.cursor()
+    cursor.execute(sql_select_query)
+    records2=cursor.fetchall()
+    return records2[0]
+
+def get_role(connection):
+    sql_select_query = "select job_title from job_master jm join user_master um where jm.job_id=um.user_preferred_job_id"
+    cursor=connection.cursor()
+    cursor.execute(sql_select_query)
+    records2=cursor.fetchall()
+    return records2[0]
 
 def get_resume_skills(connection):
-    sql_select_Query2="select  resume_id,skill_id from resume_skills where is_active=1"
+    sql_select_Query2="select resume_id,skill_id from resume_skills where is_active=1"
     cursor=connection.cursor()
     cursor.execute(sql_select_Query2)
     records2=cursor.fetchall()
@@ -82,10 +102,10 @@ if __name__ =='__main__':
     #print(resume_skills)
     email_id_list = get_emailing_list(connection)
     # print(email_list)
-    location = "california"
-    role = "Software Engineer"
+    location = get_location(connection)
+    role = get_role(connection)
     no_of_jobs_to_retrieve = 5
-    match_threshold = 1
+    match_threshold = get_threshold(connection)
     # final_result_linkedIn = sl.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     final_result_glassdoor = sg.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)
     # final_result_indeed = si.get_job_description(connection,resume_skills,all_skills, match_threshold, role, location, no_of_jobs_to_retrieve, data)

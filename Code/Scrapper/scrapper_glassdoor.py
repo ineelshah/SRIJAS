@@ -20,7 +20,7 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
     options.add_argument('--disable-dev-shm-usage')
 #install web driver     
     driver  =  webdriver.Chrome (options=options,executable_path=ChromeDriverManager().install())
-# Create dynamic url in order to fetch various filters    
+# Create dynamic url in order to fetch various advanced filters    
     url = "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword="+role+"&sc.keyword="+role+"&locT=&locId=&jobType="
 #Fetch URL
     driver.get(url)

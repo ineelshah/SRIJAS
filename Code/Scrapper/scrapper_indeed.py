@@ -51,6 +51,7 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
                 break
     final_dict = {}
     # ========== Iterate through each url and get the job description =================================
+    job_role = []
     for i in job_urls:
         time.sleep(5)
         jobs = []
@@ -58,7 +59,10 @@ def get_job_description(resume_skills,all_skills, match_threshold, role, locatio
         job_description = driver.find_element_by_xpath('//*[@id="jobDescriptionText"]').text
         jobs.append(job_description)
         final_dict[i] = job_description
+        job_title=driver.find_element_by_xpath("//*[@id='viewJobSSRRoot']/div/div[3]/div/div/div[1]/div[1]/div[2]/div[1]/div[1]/h1").text
+        #company_details=driver.find_element_by_xpath("//div[@class='css-16nw49e e11nt52q1']").text
+        job_role.append(job_title)
     
     final_result=ke.get_user_id_to_list_of_job_ids(resume_skills,final_dict,all_skills,match_threshold)
 
-    return final_result
+    return job_role,final_result
